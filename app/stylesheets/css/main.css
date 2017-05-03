@@ -1,0 +1,15 @@
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; }
+
+.nav {
+  display: flex; }
+  .nav li {
+    list-style-type: none;
+    padding: 10px; }
+  .nav a {
+    text-decoration: none;
+    color: black; }
+  .nav .active {
+    font-weight: bold; }
+
+/*# sourceMappingURL=main.css.map */

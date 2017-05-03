@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  li {
+    list-style-type: none;
+    padding: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .active {
+    font-weight: bold;
+  }
+}
