@@ -12,7 +12,13 @@ class Contact extends React.Component {
       state: null,
       state_abbr: null
     } // end this.state
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   } // end constructor
+
+  handleSubmit() {
+
+  }
 
   componentDidMount() {
     api.fetchContactInfo()
@@ -30,11 +36,60 @@ class Contact extends React.Component {
   } // end componentDidMount
 
   render() {
+
+    //TODO: move this logic to about?
+    // <p>{this.state.name}</p>
+    // <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
+    // <p>{this.state.city}, {this.state.state_abbr}</p>
+
+
     return (
-      <div>
-        <p>{this.state.name}</p>
-        <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
-        <p>{this.state.city}, {this.state.state_abbr}</p>
+      <div className='container'>
+
+        <form className='contact-form' onSubmit={this.handleSubmit}>
+          <div className='form-group'>
+            <label htmlFor='f_name'>Name:</label>
+            <input
+              id='email_f_name'
+              type='text'
+              placeholder='First Name'
+            />
+            <input
+              id='email_l_name'
+              type='text'
+              placeholder='Last Name'
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='subject'>Subject:</label>
+            <input
+              id='subject_line'
+              type='text'
+              placeholder='Subject'
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='email_return_address'>Email:</label>
+            <input
+              id='email_return_address'
+              type='text'
+              placeholder='Email address'
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='email_message'>Message:</label>
+            <textarea
+              id='email_message'
+              rows='10'
+            />
+          </div>
+          <button
+            type='submit'
+            className='button'
+            disabled={!this.state.email_address}>
+            Send
+          </button>
+        </form>
       </div>
     ) // end return
   } // end render

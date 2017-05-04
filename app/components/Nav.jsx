@@ -7,7 +7,7 @@ class Nav extends React.Component {
       <ul className="nav">
         <li>
           <NavLink exact activeClassName="active" to="/">
-            Home
+            About
           </NavLink>
         </li>
         <li>
