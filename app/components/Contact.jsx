@@ -1,57 +1,60 @@
 import React from 'react';
-import axios from 'axios';
-import api from '../utils/api';
+import PropTypes from 'prop-types';
 
 class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
-      email: null,
-      city: null,
-      state: null,
-      state_abbr: null
-    } // end this.state
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    //NOTE: not necessary with .bind(this, propertyName) in onChange
+    //this.handleChangeFor = this.handleChangeFor.bind(this);
+
+    //this.handleSubmit = this.handleSubmit.bind(this);
+
   } // end constructor
 
-  handleSubmit() {
-
+  handleChangeFor(id, e) {
+    let newState = {};
+    newState[id] = e.target.value;
+    console.log(newState[id]);
+    this.setState(newState);
   }
 
-  componentDidMount() {
-    api.fetchContactInfo()
-    .then(function(data) {
-      this.setState(function() {
-        return {
-          name: data.f_name + ' ' + data.l_name,
-          email: data.email,
-          city: data.city,
-          state: data.state,
-          state_abbr: data.state_abbr
-        } // end return
-      }); // end .then
-    }.bind(this)); // end getContactInfo
-  } // end componentDidMount
+  // handleSubmit(e) {
+  //   console.log('handle submit this-->',this);
+  //   e.preventDefault();
+  //   this.props.onSubmit(
+  //     this.state.firstName,
+  //     this.state.lastName,
+  //     this.state.email,
+  //     this.state.subject,
+  //     this.state.message
+  //   );
+  // }
 
   render() {
 
-    //TODO: move this logic to about?
-    // <p>{this.state.name}</p>
-    // <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
-    // <p>{this.state.city}, {this.state.state_abbr}</p>
-
+    //TODO: move this to form after figuring out onChange
+    // onSubmit={this.handleSubmit}
 
     return (
       <div className='container'>
         <div className='form-wrap'>
-          <form className='form-label' onSubmit={this.handleSubmit}>
+
+          <form className='form-label' >
             <fieldset>
               <input
                 id='email_f_name'
                 type='text'
-                autocomplete="off"
+                value={this.state.firstName}
+                autoComplete="off"
+                onChange={this.handleChangeFor.bind(this,'firstName')}
                 required
               />
             <label htmlFor='email_f_name'>First Name</label>
@@ -60,17 +63,20 @@ class Contact extends React.Component {
               <input
                 id='email_l_name'
                 type='text'
-                autocomplete="off"
+                value={this.state.lastName}
+                autoComplete="off"
+                onChange={this.handleChangeFor.bind(this, 'lastName')}
                 required
               />
             <label htmlFor='email_l_name'>Last Name</label>
             </fieldset>
-
             <fieldset>
               <input
                 id='email_return_address'
                 type='text'
-                autocomplete="off"
+                value={this.state.email}
+                autoComplete="off"
+                onChange={this.handleChangeFor.bind(this, 'email')}
                 required
               />
             <label htmlFor='email_return_address'>Email Address</label>
@@ -79,7 +85,9 @@ class Contact extends React.Component {
               <input
                 id='email_subject_line'
                 type='text'
-                autocomplete="off"
+                value={this.state.subject}
+                autoComplete="off"
+                onChange={this.handleChangeFor.bind(this, 'subject')}
                 required
               />
             <label htmlFor='email_subject_line'>Subject</label>
@@ -87,8 +95,10 @@ class Contact extends React.Component {
             <fieldset>
               <textarea
                 id='email_message'
+                value={this.state.message}
                 rows='10'
-                autocomplete="off"
+                autoComplete="off"
+                onChange={this.handleChangeFor.bind(this, 'message')}
                 required
               />
               <label htmlFor='email_message'>Message</label>
@@ -96,7 +106,11 @@ class Contact extends React.Component {
             <button
               type='submit'
               className='button'
-              disabled={!this.state.email_address}>
+              disabled={!this.state.firstName &&
+                        !this.state.lastName &&
+                        !this.state.email &&
+                        !this.state.subject &&
+                        !this.state.message }>
               Send
             </button>
           </form>
@@ -105,5 +119,9 @@ class Contact extends React.Component {
     ) // end return
   } // end render
 } // end Contact
+
+Contact.propTypes = {
+  //onSubmit: PropTypes.func.isRequired
+}
 
 export default Contact;
