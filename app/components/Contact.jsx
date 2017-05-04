@@ -1,9 +1,22 @@
 import React from 'react';
+import axios from 'axios';
+
+function getContactInfo() {
+  return axios.get('/api/contact')
+  .then(function(response) {
+    return response;
+  });
+}
 
 class Contact extends React.Component {
   render() {
     return (
-      <div>CONTACT</div>
+      <div>
+        <p>CONTACT</p>
+        <button onClick={getContactInfo}>
+          get contact info
+        </button>
+      </div>
     )
   }
 }

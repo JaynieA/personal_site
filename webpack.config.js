@@ -19,7 +19,14 @@ let config = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5432",
+        pathRewrite: {"^/api" : ""},
+        secure: false
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -30,7 +37,7 @@ let config = {
 
 //If we are building for production
 if(process.env.NODE_ENV === 'production') {
-  config.plugins.push(
+  appConfig.plugins.push(
     new webpack.DefinePlugin({
       'process.env' : {
         'NODE_ENV' : JSON.stringify(process.env.NODE_ENV)
