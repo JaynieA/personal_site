@@ -10,7 +10,7 @@
  //GETS contents of `contact_info` table
 router.get('/', function(req, res) {
    console.log('contact route hit');
-   let results = [];
+   let results;
    pg.connect(connection, function(err, client, done) {
      if (err) {
        console.log(err);
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
      } else {
        let query = client.query("SELECT * FROM contact_info");
        query.on('row', function(row) {
-         results.push(row);
+         results = row;
        }); // end on
        query.on('end', function() {
          done();
