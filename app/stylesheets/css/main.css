@@ -1,6 +1,11 @@
 body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
 .container {
   max-width: 95%;
   margin: 0 auto; }
@@ -32,26 +37,100 @@ body {
   .nav .active {
     font-weight: bold; }
 
-.contact-form {
+.form-wrap {
+  padding: 10%; }
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+input {
+  height: 3.5em; }
+
+textarea {
+  height: 9em; }
+
+input,
+textarea {
+  display: block;
   width: 100%;
-  margin: 0 auto; }
-  .contact-form label {
-    display: block; }
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 12pt;
-    background-color: #fafafa;
-    margin: 8px auto;
-    border: 1px solid rgba(0, 0, 0, 0.43);
-    border-radius: 1px;
-    width: 100%;
-    transition: 0.2s ease; }
-    .contact-form input:active, .contact-form input:focus,
-    .contact-form textarea:active,
-    .contact-form textarea:focus {
-      background-color: white; }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none; }
+  padding: 16px 8px;
+  border: 0;
+  border-radius: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.97);
+  color: #212121;
+  outline: 0;
+  appearance: none;
+  transition: all 0.2s ease-in-out; }
+
+.form-label fieldset {
+  position: relative; }
+  .form-label fieldset:first-child input {
+    border-radius: 4px 4px 0 0; }
+  .form-label fieldset:last-child input {
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.95); }
+  .form-label fieldset + fieldset {
+    border-top: 1px solid #ddd; }
+.form-label label {
+  position: absolute;
+  top: 27px;
+  left: 8px;
+  color: #909090;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease-in-out; }
+
+.form-css-label input[data-empty="false"], .form-css-label input:valid, .form-css-label input:focus,
+.form-css-label textarea[data-empty="false"],
+.form-css-label textarea:valid,
+.form-css-label textarea:focus {
+  padding: 32px 8px 10px; }
+.form-css-label input:focus,
+.form-css-label textarea:focus {
+  outline: 0;
+  background: white; }
+.form-css-label input[data-empty="false"] + label, .form-css-label input:valid + label, .form-css-label input:focus + label,
+.form-css-label textarea[data-empty="false"] + label,
+.form-css-label textarea:valid + label,
+.form-css-label textarea:focus + label {
+  color: #5856D6;
+  font-weight: 700;
+  font-size: 12px;
+  transform: translate3d(-7px, -32px, 0); }
+
+.form-wrap {
+  padding: 0; }
+
+input,
+textarea {
+  border: 1px solid blue;
+  margin: 10px 0 20px 0;
+  height: 2.5em;
+  padding: 4px 8px;
+  top: 24; }
+
+textarea {
+  height: 9em; }
+
+.form-css-label input:focus {
+  padding: 12px 8px 10px; }
+
+.form-label label {
+  top: 24px; }
+.form-label fieldset + fieldset {
+  border-top: none; }
+
+.form-css-label input[data-empty="false"], .form-css-label input:valid, .form-css-label input:focus,
+.form-css-label textarea[data-empty="false"],
+.form-css-label textarea:valid,
+.form-css-label textarea:focus {
+  padding: 7px 8px 6px; }
+
+.form-label fieldset:first-child input {
+  border-radius: 0; }
 
 /*# sourceMappingURL=main.css.map */

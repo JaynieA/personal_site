@@ -45,51 +45,62 @@ class Contact extends React.Component {
 
     return (
       <div className='container'>
+        <div className='form-wrap'>
+          <form className='form-label form-css-label' onSubmit={this.handleSubmit}>
+            <fieldset>
+              <input
+                id='email_f_name'
+                type='text'
+                autocomplete="off"
+                required
+              />
+            <label htmlFor='email_f_name'>First Name:</label>
+            </fieldset>
+            <fieldset>
+              <input
+                id='email_l_name'
+                type='text'
+                autocomplete="off"
+                required
+              />
+            <label htmlFor='email_l_name'>Last Name:</label>
+            </fieldset>
 
-        <form className='contact-form' onSubmit={this.handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='f_name'>Name:</label>
-            <input
-              id='email_f_name'
-              type='text'
-              placeholder='First Name'
-            />
-            <input
-              id='email_l_name'
-              type='text'
-              placeholder='Last Name'
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='subject'>Subject:</label>
-            <input
-              id='subject_line'
-              type='text'
-              placeholder='Subject'
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='email_return_address'>Email:</label>
-            <input
-              id='email_return_address'
-              type='text'
-              placeholder='Email address'
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='email_message'>Message:</label>
-            <textarea
-              id='email_message'
-              rows='10'
-            />
-          </div>
-          <button
-            type='submit'
-            className='button'
-            disabled={!this.state.email_address}>
-            Send
-          </button>
-        </form>
+            <fieldset>
+              <input
+                id='email_return_address'
+                type='text'
+                autocomplete="off"
+                required
+              />
+            <label htmlFor='email_return_address'>Email Address:</label>
+            </fieldset>
+            <fieldset>
+              <input
+                id='subject_line'
+                type='text'
+                autocomplete="off"
+                required
+              />
+              <label htmlFor='subject'>Subject:</label>
+            </fieldset>
+            <fieldset>
+              <textarea
+                id='email_message'
+                rows='10'
+                autocomplete="off"
+                required
+              />
+              <label htmlFor='email_message'>Message:</label>
+            </fieldset>
+            <button
+              type='submit'
+              className='button'
+              disabled={!this.state.email_address}>
+              Send
+            </button>
+          </form>
+        </div>
       </div>
     ) // end return
   } // end render
