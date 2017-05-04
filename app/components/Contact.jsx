@@ -46,7 +46,7 @@ class Contact extends React.Component {
     return (
       <div className='container'>
         <div className='form-wrap'>
-          <form className='form-label form-css-label' onSubmit={this.handleSubmit}>
+          <form className='form-label' onSubmit={this.handleSubmit}>
             <fieldset>
               <input
                 id='email_f_name'
@@ -54,7 +54,7 @@ class Contact extends React.Component {
                 autocomplete="off"
                 required
               />
-            <label htmlFor='email_f_name'>First Name:</label>
+            <label htmlFor='email_f_name'>First Name</label>
             </fieldset>
             <fieldset>
               <input
@@ -63,7 +63,7 @@ class Contact extends React.Component {
                 autocomplete="off"
                 required
               />
-            <label htmlFor='email_l_name'>Last Name:</label>
+            <label htmlFor='email_l_name'>Last Name</label>
             </fieldset>
 
             <fieldset>
@@ -73,16 +73,16 @@ class Contact extends React.Component {
                 autocomplete="off"
                 required
               />
-            <label htmlFor='email_return_address'>Email Address:</label>
+            <label htmlFor='email_return_address'>Email Address</label>
             </fieldset>
             <fieldset>
               <input
-                id='subject_line'
+                id='email_subject_line'
                 type='text'
                 autocomplete="off"
                 required
               />
-              <label htmlFor='subject'>Subject:</label>
+            <label htmlFor='email_subject_line'>Subject</label>
             </fieldset>
             <fieldset>
               <textarea
@@ -91,7 +91,7 @@ class Contact extends React.Component {
                 autocomplete="off"
                 required
               />
-              <label htmlFor='email_message'>Message:</label>
+              <label htmlFor='email_message'>Message</label>
             </fieldset>
             <button
               type='submit'

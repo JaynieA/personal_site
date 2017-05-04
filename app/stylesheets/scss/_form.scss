@@ -1,0 +1,77 @@
+@import 'settings';
+
+.form-wrap {
+  padding: 5%;
+}
+
+//Form Elements
+.form-label {
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  input {
+    height: 2.5em;
+  }
+  textarea {
+    height: 9em;
+  }
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 4px 8px;
+    margin: 10px 0 20px 0;
+    border: 1px solid $form-border-color;
+    border-radius: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    color: $form-text-color;
+    outline: 0;
+    appearance: none;
+    transition: all 0.2s ease-in-out;
+  }
+  fieldset {
+    position: relative;
+    &:first-child input {
+      border-radius: 0;
+    }
+    &:last-child input {
+      border-radius: 0;
+    }
+  }
+  label {
+    position: absolute;
+    top: 24px;
+    left: 8px;
+    color: $placeholder-color;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+// Animation on <label>
+.form-label {
+  input,
+  textarea {
+    &[data-empty="false"],
+    &:valid,
+    &:focus {
+      padding: 7px 8px 6px;
+    }
+    &:focus {
+      outline: 0;
+      background-color: $focus-background-color;
+    }
+    &[data-empty="false"] + label,
+    &:valid + label,
+    &:focus + label {
+      color: $form-text-color;
+      font-weight: 700;
+      font-size: 12px;
+      transform: translate3d(-7px, -32px, 0);
+    }
+  }
+}

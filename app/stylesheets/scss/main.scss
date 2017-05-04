@@ -1,3 +1,5 @@
+@import 'settings';
+
 body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
@@ -14,8 +16,8 @@ body {
 }
 
 .button {
-  color: #e6e6e6;
-  background: #0a0a0a;
+  color: $button-text-color;
+  background: $button-background-color;
   border: none;
   font-size: 16px;
   border-radius: 3px;
@@ -34,4 +36,4 @@ body {
 }
 
  @import 'nav';
- @import 'contact';
+ @import 'form';

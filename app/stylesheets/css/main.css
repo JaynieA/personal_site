@@ -38,99 +38,61 @@ body {
     font-weight: bold; }
 
 .form-wrap {
-  padding: 10%; }
+  padding: 5%; }
 
-fieldset {
+.form-label fieldset {
   margin: 0;
   padding: 0;
   border: 0; }
-
-input {
-  height: 3.5em; }
-
-textarea {
+.form-label input {
+  height: 2.5em; }
+.form-label textarea {
   height: 9em; }
-
-input,
-textarea {
+.form-label input,
+.form-label textarea {
   display: block;
   width: 100%;
-  padding: 16px 8px;
-  border: 0;
+  padding: 4px 8px;
+  margin: 10px 0 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.43);
   border-radius: 0;
   font-size: 18px;
   font-weight: 400;
   line-height: 1;
-  background: rgba(255, 255, 255, 0.97);
-  color: #212121;
+  color: #333;
   outline: 0;
   appearance: none;
   transition: all 0.2s ease-in-out; }
-
 .form-label fieldset {
   position: relative; }
   .form-label fieldset:first-child input {
-    border-radius: 4px 4px 0 0; }
+    border-radius: 0; }
   .form-label fieldset:last-child input {
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.95); }
-  .form-label fieldset + fieldset {
-    border-top: 1px solid #ddd; }
+    border-radius: 0; }
 .form-label label {
   position: absolute;
-  top: 27px;
+  top: 24px;
   left: 8px;
   color: #909090;
   transform: translate3d(0, 0, 0);
   transition: all 0.2s ease-in-out; }
 
-.form-css-label input[data-empty="false"], .form-css-label input:valid, .form-css-label input:focus,
-.form-css-label textarea[data-empty="false"],
-.form-css-label textarea:valid,
-.form-css-label textarea:focus {
-  padding: 32px 8px 10px; }
-.form-css-label input:focus,
-.form-css-label textarea:focus {
+.form-label input[data-empty="false"], .form-label input:valid, .form-label input:focus,
+.form-label textarea[data-empty="false"],
+.form-label textarea:valid,
+.form-label textarea:focus {
+  padding: 7px 8px 6px; }
+.form-label input:focus,
+.form-label textarea:focus {
   outline: 0;
-  background: white; }
-.form-css-label input[data-empty="false"] + label, .form-css-label input:valid + label, .form-css-label input:focus + label,
-.form-css-label textarea[data-empty="false"] + label,
-.form-css-label textarea:valid + label,
-.form-css-label textarea:focus + label {
-  color: #5856D6;
+  background-color: #fafafa; }
+.form-label input[data-empty="false"] + label, .form-label input:valid + label, .form-label input:focus + label,
+.form-label textarea[data-empty="false"] + label,
+.form-label textarea:valid + label,
+.form-label textarea:focus + label {
+  color: #333;
   font-weight: 700;
   font-size: 12px;
   transform: translate3d(-7px, -32px, 0); }
-
-.form-wrap {
-  padding: 0; }
-
-input,
-textarea {
-  border: 1px solid blue;
-  margin: 10px 0 20px 0;
-  height: 2.5em;
-  padding: 4px 8px;
-  top: 24; }
-
-textarea {
-  height: 9em; }
-
-.form-css-label input:focus {
-  padding: 12px 8px 10px; }
-
-.form-label label {
-  top: 24px; }
-.form-label fieldset + fieldset {
-  border-top: none; }
-
-.form-css-label input[data-empty="false"], .form-css-label input:valid, .form-css-label input:focus,
-.form-css-label textarea[data-empty="false"],
-.form-css-label textarea:valid,
-.form-css-label textarea:focus {
-  padding: 7px 8px 6px; }
-
-.form-label fieldset:first-child input {
-  border-radius: 0; }
 
 /*# sourceMappingURL=main.css.map */
