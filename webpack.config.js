@@ -21,10 +21,11 @@ let config = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      "/api": {
-        target: "http://localhost:5432",
+      "/api/*": {
+        target: "http://localhost:5050",
         pathRewrite: {"^/api" : ""},
-        secure: false
+        secure: false,
+        changeOrigin: true
       }
     }
   },

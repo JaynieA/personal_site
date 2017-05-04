@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT || 5050;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -15,7 +15,7 @@ app.listen(PORT, function() {
   console.log('server listening on', PORT);
 }); // end app listen
 
-app.use('/', proxy({target: 'http://localhost:5432', changeOrigin: true}));
+// app.use('/', proxy({target: 'http://localhost:5432', changeOrigin: true}));
 
 //Routers
 let contactRoute = require('./routers/contactRoute');

@@ -11,7 +11,7 @@
 router.get('/', function(req, res) {
    console.log('contact route hit');
    let results = [];
-   PG.connect(connection, function(err, client, done) {
+   pg.connect(connection, function(err, client, done) {
      if (err) {
        console.log(err);
        res.sendStatus(500);

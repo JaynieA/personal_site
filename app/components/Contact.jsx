@@ -4,7 +4,8 @@ import axios from 'axios';
 function getContactInfo() {
   return axios.get('/api/contact')
   .then(function(response) {
-    return response;
+    console.log('contact results-->', response.data.results);
+    return response.data.results;
   });
 }
 
