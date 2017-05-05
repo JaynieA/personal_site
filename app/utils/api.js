@@ -7,6 +7,13 @@ let api = {
       console.log('contact results-->', response.data.results);
       return response.data.results;
     });
+  },
+  postContactForm: function(formPayload) {
+    return axios.post('/api/email', formPayload)
+    .then(function(response) {
+      console.log('email post results-->', response.data);
+      return response.data;
+    });
   }
 };
 

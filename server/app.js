@@ -15,7 +15,10 @@ app.listen(PORT, function() {
 }); // end app listen
 
 //Routers
-let contactRoute = require('./routers/contactRoute');
+const contactRoute = require('./routers/contactRoute');
 app.use('/contact', contactRoute);
+
+const emailRoute = require('./routers/emailRoute');
+app.use('/email', emailRoute);
 
 module.exports = app;

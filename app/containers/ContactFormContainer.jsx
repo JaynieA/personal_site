@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SingleInput from '../components/SingleInput';
 import TextArea from '../components/TextArea';
+import api from '../utils/api';
 
 class ContactFormContainer extends React.Component {
   constructor(props) {
@@ -36,7 +37,15 @@ class ContactFormContainer extends React.Component {
       subject: this.state.subject,
       message: this.state.message
     }
+
     console.log('Send this in a POST request:', formPayload)
+    api.postContactForm(formPayload)
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
     this.handleClearForm(e);
   }
 

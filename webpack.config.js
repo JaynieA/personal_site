@@ -13,10 +13,6 @@ let config = {
     extensions: ['.js', '.jsx']
   },
   module: {
-    // rules: [
-    //   {test:  /\.jsx?$/, use: ['babel-loader']},
-    //   {test: /\.css$/, use: ['style-loader', 'css-loader'] }
-    // ]
     rules: [{
       test: /\.jsx?$/,
       use: [
@@ -48,9 +44,16 @@ let config = {
   ]
 };
 
+//If we are not building for production
+if(process.env.NODE_ENV !== 'production') {
+  config.plugins.push(
+    new webpack.EnvironmentPlugin(['POSTMARK_KEY', 'POSTMARK_EMAIL'])
+  );
+}
+
 //If we are building for production
 if(process.env.NODE_ENV === 'production') {
-  appConfig.plugins.push(
+  config.plugins.push(
     new webpack.DefinePlugin({
       'process.env' : {
         'NODE_ENV' : JSON.stringify(process.env.NODE_ENV)
