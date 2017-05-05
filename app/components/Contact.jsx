@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SingleInput from './SingleInput';
+import TextArea from './TextArea';
 
 class Contact extends React.Component {
   constructor(props) {
@@ -10,13 +12,12 @@ class Contact extends React.Component {
       email: '',
       subject: '',
       message: ''
-    }
-
-    //NOTE: not necessary with .bind(this, propertyName) in onChange
-    //this.handleChangeFor = this.handleChangeFor.bind(this);
-
-    //this.handleSubmit = this.handleSubmit.bind(this);
-
+    } // end this.state
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleLastNameChange = this.handleLastNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleSubjectChange = this.handleSubjectChange.bind(this);
+    this.handleMessageChange = this.handleMessageChange.bind(this);
   } // end constructor
 
   handleChangeFor(id, e) {
@@ -26,83 +27,85 @@ class Contact extends React.Component {
     this.setState(newState);
   }
 
-  // handleSubmit(e) {
-  //   console.log('handle submit this-->',this);
-  //   e.preventDefault();
-  //   this.props.onSubmit(
-  //     this.state.firstName,
-  //     this.state.lastName,
-  //     this.state.email,
-  //     this.state.subject,
-  //     this.state.message
-  //   );
-  // }
+  handleFirstNameChange(e) {
+    this.setState({firstName: e.target.value})
+    console.log(this.state.firstName);
+  }
+
+  handleLastNameChange(e) {
+    this.setState({lastName: e.target.value})
+    console.log(this.state.lastName);
+  }
+
+  handleEmailChange(e) {
+    this.setState({email: e.target.value});
+    console.log(this.state.email);
+  }
+
+  handleSubjectChange(e) {
+    this.setState({subject: e.target.value});
+    console.log(this.state.subject);
+  }
+
+  handleMessageChange(e) {
+    this.setState({message: e.target.value});
+    console.log(this.state.message);
+  }
 
   render() {
-
-    //TODO: move this to form after figuring out onChange
-    // onSubmit={this.handleSubmit}
 
     return (
       <div className='container'>
         <div className='form-wrap'>
 
-          <form className='form-label' >
-            <fieldset>
-              <input
-                id='email_f_name'
-                type='text'
-                value={this.state.firstName}
-                autoComplete="off"
-                onChange={this.handleChangeFor.bind(this,'firstName')}
-                required
-              />
-            <label htmlFor='email_f_name'>First Name</label>
-            </fieldset>
-            <fieldset>
-              <input
-                id='email_l_name'
-                type='text'
-                value={this.state.lastName}
-                autoComplete="off"
-                onChange={this.handleChangeFor.bind(this, 'lastName')}
-                required
-              />
-            <label htmlFor='email_l_name'>Last Name</label>
-            </fieldset>
-            <fieldset>
-              <input
-                id='email_return_address'
-                type='text'
-                value={this.state.email}
-                autoComplete="off"
-                onChange={this.handleChangeFor.bind(this, 'email')}
-                required
-              />
-            <label htmlFor='email_return_address'>Email Address</label>
-            </fieldset>
-            <fieldset>
-              <input
-                id='email_subject_line'
-                type='text'
-                value={this.state.subject}
-                autoComplete="off"
-                onChange={this.handleChangeFor.bind(this, 'subject')}
-                required
-              />
-            <label htmlFor='email_subject_line'>Subject</label>
-            </fieldset>
-            <fieldset>
-              <textarea
-                id='email_message'
-                value={this.state.message}
-                rows='10'
-                autoComplete="off"
-                onChange={this.handleChangeFor.bind(this, 'message')}
-                required
-              />
-              <label htmlFor='email_message'>Message</label>
-            </fieldset>
+          <form className='form-label'>
+            <SingleInput
+              id={'contactFirstName'}
+              name={'firstName'}
+              inputType={'text'}
+              content={this.state.firstName}
+              controlFunc={this.handleFirstNameChange}
+              autoComplete={'off'}
+              title={'First Name'}
+            />
+            <SingleInput
+              id={'contactLastName'}
+              name={'lastName'}
+              inputType={'text'}
+              content={this.state.lastName}
+              controlFunc={this.handleLastNameChange}
+              autoComplete={'off'}
+              title={'Last Name'}
+            />
+            <SingleInput
+              id={'contactEmail'}
+              name={'email'}
+              inputType={'text'}
+              content={this.state.email}
+              controlFunc={this.handleEmailChange}
+              autoComplete={'off'}
+              title={'Email Address'}
+            />
+            <SingleInput
+              id={'contactSubject'}
+              name={'subject'}
+              inputType={'text'}
+              content={this.state.subject}
+              controlFunc={this.handleSubjectChange}
+              autoComplete={'off'}
+              title={'Subject'}
+            />
+
+            <TextArea
+              id={'contactMessage'}
+              name={'message'}
+              content={this.state.message}
+              rows={10}
+              autoComplete={'off'}
+              controlFunc={this.handleMessageChange}
+              resize={true}
+              title={'Message'}
+            />
             <button
               type='submit'
               className='button'
@@ -119,9 +122,5 @@ class Contact extends React.Component {
     ) // end return
   } // end render
 } // end Contact
-
-Contact.propTypes = {
-  //onSubmit: PropTypes.func.isRequired
-}
 
 export default Contact;
