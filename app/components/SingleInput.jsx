@@ -11,6 +11,8 @@ const SingleInput = (props) => (
       onChange={props.controlFunc}
       placeholder={props.placeholder}
       autoComplete={props.autoComplete}
+      onBlur={props.onBlur}
+      className={props.className}
       required
     />
     <label htmlFor={props.id}>{props.title}</label>
@@ -28,7 +30,9 @@ SingleInput.propTypes = {
   controlFunc: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   autoComplete: PropTypes.oneOf(['off', 'on']).isRequired,
-  title: PropTypes.string.isRequired
+  onBlur: PropTypes.func,
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default SingleInput;

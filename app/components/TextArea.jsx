@@ -12,6 +12,8 @@ const TextArea = (props) => (
       onChange={props.controlFunc}
       style={props.resize ? null : {resize: 'none'}}
       placeholder={props.placeholder}
+      onBlur={props.onBlur}
+      className={props.className}
       required
     />
     <label htmlFor={props.id}>{props.title}</label>
@@ -27,6 +29,8 @@ TextArea.propTypes = {
   controlFunc: PropTypes.func.isRequired,
   resize: PropTypes.bool,
   placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired
 }
 

@@ -32,6 +32,9 @@
     outline: 0;
     appearance: none;
     transition: all 0.2s ease-in-out;
+    &.error {
+      border: 1px solid red;
+    }
   }
   fieldset {
     position: relative;
