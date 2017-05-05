@@ -13,20 +13,28 @@ class ContactFormContainer extends React.Component {
       email: '',
       subject: '',
       message: ''
-    } // end this.state
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }; // end this.state
   } // end constructor
 
-  handleClearForm = (e) => {
-    e.preventDefault();
+  handleClearForm = () => {
     this.setState({
       firstName: '',
       lastName: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
+      submitted: false
     }); // end setState
   } // end handleClearForm
+
+  handleConfirmation = () => {
+    this.setState({
+      submitted: true
+    }); // end setState
+    setTimeout(() => {
+      this.setState({submitted:false});
+    }, 5000);  // wait 5 seconds, then reset to false
+  } // end handleConfirmation
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -36,52 +44,46 @@ class ContactFormContainer extends React.Component {
       email: this.state.email,
       subject: this.state.subject,
       message: this.state.message
-    }
-
+    } // end formPayload
     console.log('Send this in a POST request:', formPayload)
     api.postContactForm(formPayload)
-    .then(function(response) {
-      console.log(response);
+    .then((response) => {
+      console.log('form submission success-->', response);
+      this.handleClearForm();
+      this.handleConfirmation();
     })
-    .catch(function(err) {
-      console.log(err);
-    });
-    this.handleClearForm(e);
-  }
+    .catch((err) => {
+      //TODO: MAKE THIS FAIL GRACEFULLY
+      console.log('api.postContactForm error -->', err);
+    }); // end api.postContactForm
+  } // end handleSubmit
 
-  handleFirstNameChange = (e) => {
-    this.setState({firstName: e.target.value});
-  } // end handleFirstNameChange
-
-  handleLastNameChange = (e) => {
-    this.setState({lastName: e.target.value});
-  } // end handleLastNameChange
-
-  handleEmailChange = (e) => {
-    this.setState({email: e.target.value});
-  } // end handleEmailChange
-
-  handleSubjectChange = (e) => {
-    this.setState({subject: e.target.value});
-  } // end handleSubjectChange
-
-  handleMessageChange = (e) => {
-    this.setState({message: e.target.value});
-  } // end handleMessageChange
+  handleFieldChange = (key) => (e) => {
+    var state = {};
+    state[key] = e.target.value;
+    console.log(state);
+    this.setState(state);
+  } // end handleFieldChange
 
   render() {
 
+    let submitted = this.state.submitted;
+
     return (
       <div className='container'>
-        <div className='form-wrap'>
 
+        {submitted === true &&
+        <pre>Form successfully submitted</pre>
+        }
+
+        <div className='form-wrap'>
           <form className='form-label' onSubmit={this.handleSubmit}>
             <SingleInput
               id={'contactFirstName'}
               name={'firstName'}
               inputType={'text'}
               content={this.state.firstName}
-              controlFunc={this.handleFirstNameChange}
+              controlFunc={this.handleFieldChange('firstName')}
               autoComplete={'off'}
               title={'First Name'}
             />
@@ -90,7 +92,7 @@ class ContactFormContainer extends React.Component {
               name={'lastName'}
               inputType={'text'}
               content={this.state.lastName}
-              controlFunc={this.handleLastNameChange}
+              controlFunc={this.handleFieldChange('lastName')}
               autoComplete={'off'}
               title={'Last Name'}
             />
@@ -99,7 +101,7 @@ class ContactFormContainer extends React.Component {
               name={'email'}
               inputType={'text'}
               content={this.state.email}
-              controlFunc={this.handleEmailChange}
+              controlFunc={this.handleFieldChange('email')}
               autoComplete={'off'}
               title={'Email Address'}
             />
@@ -108,7 +110,7 @@ class ContactFormContainer extends React.Component {
               name={'subject'}
               inputType={'text'}
               content={this.state.subject}
-              controlFunc={this.handleSubjectChange}
+              controlFunc={this.handleFieldChange('subject')}
               autoComplete={'off'}
               title={'Subject'}
             />
@@ -118,7 +120,7 @@ class ContactFormContainer extends React.Component {
               content={this.state.message}
               rows={10}
               autoComplete={'off'}
-              controlFunc={this.handleMessageChange}
+              controlFunc={this.handleFieldChange('message')}
               resize={true}
               title={'Message'}
             />

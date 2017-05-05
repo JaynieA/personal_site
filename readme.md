@@ -12,6 +12,8 @@ My personal website and portfolio.
 * PostgreSQL
 * HTML5
 * SASS
+* nodemailer
+* postmark
 
 ## Installation
 
