@@ -13,10 +13,22 @@ let config = {
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: [
-      {test:  /\.jsx?$/, use: ['babel-loader']},
-      {test: /\.css$/, use: ['style-loader', 'css-loader'] }
-    ]
+    // rules: [
+    //   {test:  /\.jsx?$/, use: ['babel-loader']},
+    //   {test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    // ]
+    rules: [{
+      test: /\.jsx?$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['transform-class-properties']
+          }
+        }
+      ]
+    },
+    {test: /\.css$/, use: ['style-loader', 'css-loader'] }]
   },
   devServer: {
     historyApiFallback: true,
