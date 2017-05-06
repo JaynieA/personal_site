@@ -86,7 +86,6 @@ body {
   .form-label textarea.error,
   .form-label textarea.error:focus,
   .form-label textarea.error:active {
-    border: 1px solid #CC0000;
     background: #FFEEEE; }
 .form-label fieldset {
   position: relative; }

@@ -11,7 +11,6 @@ let api = {
   postContactForm: function(formPayload) {
     return axios.post('/api/email', formPayload)
     .then(function(response) {
-      console.log('api.postContactForm results-->', response.data);
       return response.data;
     });
   }

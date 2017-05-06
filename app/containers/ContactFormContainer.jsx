@@ -43,7 +43,6 @@ class ContactFormContainer extends React.Component {
   canBeSubmitted = () => {
     const errors = validate(this.state);
     const isEnabled = Object.keys(errors).some(x => errors[x]);
-    console.log('in canBeSubmitted--> ERRORS, ', errors, 'ISENABLED-->', isEnabled);
     //truthy if there are no errors
     return !isEnabled;
   } // end canBeSubmitted
@@ -55,7 +54,6 @@ class ContactFormContainer extends React.Component {
   } // end handleBlur
 
   handleConfirmation = () => {
-    console.log('in handleConfirmation');
     this.setState({
       submitted: true,
       btnText: 'Send',
@@ -147,7 +145,6 @@ class ContactFormContainer extends React.Component {
         subject: this.state.subject,
         message: this.state.message
       } // end formPayload
-      console.log('Send this in a POST request:', formPayload)
       api.postContactForm(formPayload)
       .then((response) => {
         console.log('form submission success-->', response);

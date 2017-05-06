@@ -13,6 +13,10 @@
 router.post('/', function(req, res) {
    console.log('contact route hit', req.body);
 
+   let bodyText = 'Name: ' + req.body.firstName + ' ' + req.body.lastName + '\n\n';
+   bodyText += 'Email: ' + req.body.email + '\n\n';
+   bodyText += 'Message: ' + req.body.message;
+
    //create sendmail transport
    let transporter = nodemailer.createTransport({
      //use postmark api credentials
@@ -28,7 +32,7 @@ router.post('/', function(req, res) {
        from: process.env.POSTMARK_EMAIL, // sender address
        to: process.env.NODEMAILER_EMAIL_RECIPIENT, // list of receivers
        subject: req.body.subject, // Subject line
-       text: req.body.message, // plain text body
+       text: bodyText, // plain text body
    };
 
    // send mail with defined transport object
