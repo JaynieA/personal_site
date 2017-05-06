@@ -246,7 +246,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('message')}
             resize={true}
             title={'Message'}
-            className={shouldMarkError('message') ? 'error' : 'NOPE'}
+            className={shouldMarkError('message') ? 'error' : ''}
             onBlur={this.handleBlur('message')}
           />
         </Form>
