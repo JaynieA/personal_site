@@ -25,6 +25,9 @@ body {
     cursor: pointer; }
   .button:active {
     transform: translateY(1px); }
+  .button.disabled {
+    cursor: no-drop;
+    background: #8a8a8a; }
 
 .nav {
   display: flex; }
@@ -63,9 +66,12 @@ body {
   outline: 0;
   appearance: none;
   transition: all 0.2s ease-in-out; }
-  .form-label input.error,
-  .form-label textarea.error {
-    border: 1px solid red; }
+  .form-label input.error, .form-label input.error:focus, .form-label input.error:active,
+  .form-label textarea.error,
+  .form-label textarea.error:focus,
+  .form-label textarea.error:active {
+    border: 1px solid #CC0000;
+    background: #FFEEEE; }
 .form-label fieldset {
   position: relative; }
   .form-label fieldset:first-child input {

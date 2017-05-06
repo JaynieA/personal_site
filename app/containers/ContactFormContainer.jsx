@@ -4,16 +4,16 @@ import SingleInput from '../components/SingleInput';
 import TextArea from '../components/TextArea';
 import api from '../utils/api';
 
-function validate(firstName, lastName, email, subject, message) {
-  // true means invalid, so our conditions got reversed
+const validate = (state) => {
+  console.log('in validate-->',state);
   return {
-    firstName: firstName.length === 0,
-    lastName: lastName.length === 0,
-    email: email.length === 0,
-    subject: subject.length === 0,
-    message: message.length === 0
-  };
-}
+    firstName: state.firstName.length === 0,
+    lastName: state.lastName.length === 0,
+    email: state.email.length === 0,
+    subject: state.subject.length === 0,
+    message: state.message.length === 0
+  }; // end return
+} // end validate
 
 class ContactFormContainer extends React.Component {
   constructor(props) {
@@ -30,11 +30,11 @@ class ContactFormContainer extends React.Component {
         email: false,
         subject: false,
         message: false
-      }
+      } // end touched
     }; // end this.state
   } // end constructor
 
-  handleClearForm = () => {
+  handleResetForm = () => {
     this.setState({
       firstName: '',
       lastName: '',
@@ -42,10 +42,18 @@ class ContactFormContainer extends React.Component {
       subject: '',
       message: '',
       submitted: false,
+      touched: {
+        firstName: false,
+        lastName: false,
+        email: false,
+        subject: false,
+        message: false
+      } // end touched
     }); // end setState
   } // end handleClearForm
 
   handleConfirmation = () => {
+    console.log('in handleConfirmation');
     this.setState({
       submitted: true
     }); // end setState
@@ -55,8 +63,9 @@ class ContactFormContainer extends React.Component {
   } // end handleConfirmation
 
   handleSubmit = (e) => {
-    if (!this.canBeSubmitted()) {
-      e.preventDefault();
+    e.preventDefault();
+    if (this.canBeSubmitted()) {
+      console.log('form can be submitted');
       const formPayload = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -68,7 +77,7 @@ class ContactFormContainer extends React.Component {
       api.postContactForm(formPayload)
       .then((response) => {
         console.log('form submission success-->', response);
-        this.handleClearForm();
+        this.handleResetForm();
         this.handleConfirmation();
       })
       .catch((err) => {
@@ -76,8 +85,9 @@ class ContactFormContainer extends React.Component {
         console.log('api.postContactForm error -->', err);
       }); // end api.postContactForm
     } else {
+      //TODO: MAKE THIS FAIL GRACEFULLY
       console.log('cant be submitted');
-    }
+    } // end else
   } // end handleSubmit
 
   handleFieldChange = (key) => (e) => {
@@ -87,37 +97,42 @@ class ContactFormContainer extends React.Component {
   } // end handleFieldChange
 
   handleBlur = (key) => (e) => {
-    console.log('handling blur-->', this.state.touched);
     this.setState({
       touched: { ...this.state.touched, [key]: true },
     }); // end setState
   } // end handleBlur
 
   canBeSubmitted = () => {
-    const errors = validate(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  }
+    const errors = validate(this.state);
+    const isEnabled = Object.keys(errors).some(x => errors[x]);
+    console.log('in canBeSubmitted--> ERRORS, ', errors, 'ISENABLED-->', isEnabled);
+    //truthy if there are no errors
+    return !isEnabled;
+  } // end canBeSubmitted
+
+  handleDisabledClick = (e) => {
+    this.setState({
+      touched: {
+        firstName: true,
+        lastName: true,
+        email: true,
+        subject: true,
+        message: true
+      } // end touched
+    }); // end setState
+  } // end handleDisabledClick
 
   render() {
-    const errors = validate(this.state.firstName, this.state.lastName, this.state.email, this.state.subject, this.state.message);
-    console.log('ERRORS-->',errors);
-    let submitted = this.state.submitted;
-    let isEnabled = this.state.firstName &&
-                    this.state.lastName &&
-                    this.state.email &&
-                    this.state.subject &&
-                    this.state.message;
-
+    const errors = validate(this.state);
+    console.log('errors in render-->', errors);
+    const submitted = this.state.submitted;
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    console.log('isDisabled in render-->', isDisabled);
     const shouldMarkError = (field) => {
-
       const hasError = errors[field];
       const shouldShow = this.state.touched[field];
-
-      let shouldWe = hasError ? shouldShow : false
-      console.log('should we mark ' + field + ' as error?: ' + shouldWe);
       return hasError ? shouldShow : false;
-    };
+    }; // end shouldMarkError
 
     return (
       <div className='container'>
@@ -181,13 +196,15 @@ class ContactFormContainer extends React.Component {
             />
             <button
               type='submit'
-              className='button'
-              disabled={!isEnabled}>
+              className={'button ' + (isDisabled ? 'disabled' : '')}
+              onClick={isDisabled ? this.handleDisabledClick : null}
+              >
               Send
             </button>
+
             {submitted === true &&
-            <pre>Form successfully submitted</pre>
-            }
+            <pre>Form successfully submitted</pre>}
+
           </form>
         </div>
       </div>

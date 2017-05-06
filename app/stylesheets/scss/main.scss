@@ -33,6 +33,10 @@ body {
   &:active {
     transform: translateY(1px);
   }
+  &.disabled {
+    cursor: no-drop;
+    background: lighten($button-background-color, 50%);
+  }
 }
 
  @import 'nav';
