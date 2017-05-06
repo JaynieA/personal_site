@@ -35,7 +35,8 @@ class ContactFormContainer extends React.Component {
       alert: {
         type: 'default',
         text:'',
-      }
+      },
+      btnText: 'Send'
     }; // end this.state
   } // end constructor
 
@@ -57,6 +58,7 @@ class ContactFormContainer extends React.Component {
     console.log('in handleConfirmation');
     this.setState({
       submitted: true,
+      btnText: 'Send',
       alert: {
         type: 'success',
         text: 'Thank you! Your message has been sent.',
@@ -107,10 +109,37 @@ class ContactFormContainer extends React.Component {
     }); // end setState
   } // end handleClearForm
 
+  handleLoading = () => {
+    const original = this.state.btnText;
+    const stopper = this.state.btnText + '...';
+    const speed = 300;
+    this.interval = window.setInterval(() => {
+      if (this.state.btnText === stopper ) {
+        this.setState(() => {
+          return {
+            btnText: original
+          } // end return
+        }); // end setState
+      } else if (this.state.btnText === original) {
+        this.setState(() => {
+          return {
+            btnText: original + 'ing.'
+          } // end return
+        }); // end setState
+      } else {
+        this.setState((prevState) => {
+          return {
+            btnText: prevState.btnText + '.'
+          } // end return
+        }); // end setState
+      } // end else
+    }, speed); // end setInterval
+  } // end handleLoading
+
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.canBeSubmitted()) {
-      console.log('form can be submitted');
+      this.handleLoading();
       const formPayload = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -122,12 +151,14 @@ class ContactFormContainer extends React.Component {
       api.postContactForm(formPayload)
       .then((response) => {
         console.log('form submission success-->', response);
+        window.clearInterval(this.interval);
         this.handleResetForm();
         this.handleConfirmation();
       })
       .catch((err) => {
         //TODO: MAKE THIS FAIL GRACEFULLY - add alt action for repeated errors
         console.log('api.postContactForm error -->', err);
+        window.clearInterval(this.interval);
         this.handleSubmissionError();
       }); // end api.postContactForm
     } // end if
@@ -136,10 +167,11 @@ class ContactFormContainer extends React.Component {
   handleSubmissionError = () => {
     this.setState({
       submitted: true,
+      btnText: 'Send',
       alert: {
         type: 'error',
         text: 'Oops! There has been an error sending your email.',
-      }
+      } // end alert
     }); // end setState
   } // end handleSubmissionError
 
@@ -159,7 +191,7 @@ class ContactFormContainer extends React.Component {
           onSubmit={this.handleSubmit}
           btnClassName={'button ' + (isDisabled ? 'disabled' : '')}
           btnControlFunc={isDisabled ? this.handleDisabledClick : null}
-          btnText={'Send'}
+          btnText={this.state.btnText}
           submitted={submitted}
           alert={this.state.alert.text}
           alertType={this.state.alert.type}
