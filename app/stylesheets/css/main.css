@@ -29,6 +29,22 @@ body {
     cursor: no-drop;
     background: #8a8a8a; }
 
+.alert {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold; }
+  .alert.success {
+    color: #3C763D;
+    background-color: #DFF0D8;
+    border-color: #d0e9c6; }
+  .alert.error {
+    color: #A94442;
+    background-color: #f2dede;
+    border-color: #ebcccc; }
+  .alert p {
+    text-align: center; }
+
 .nav {
   display: flex; }
   .nav li {

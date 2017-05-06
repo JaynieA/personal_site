@@ -39,5 +39,25 @@ body {
   }
 }
 
+.alert {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  &.success {
+    color: $alert-success-color;
+    background-color: $alert-success-background-color;
+    border-color: $alert-success-border-color;
+  }
+  &.error {
+    color: $alert-error-color;
+    background-color: $alert-error-background-color;
+    border-color: $alert-error-border-color;
+  }
+  p {
+    text-align: center;
+  }
+}
+
  @import 'nav';
  @import 'form';
