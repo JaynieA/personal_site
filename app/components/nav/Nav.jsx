@@ -15,7 +15,7 @@ const Nav = (props) => {
       </MobileNav>}
 
       {!props.mobile.isVisible &&
-      <div key={7} className="nav-menu">
+      <div key={7} className="full-nav">
         <NavLinks onClick={props.controlFunc}/>
       </div>}
 

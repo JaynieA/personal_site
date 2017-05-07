@@ -1,5 +1,9 @@
 // ** ===== COLORS ===== ** //
 
+//Element Colors
+$link-color: #999;
+$h1-color: #333;
+
 //Form Colors
 $form-border-color: rgba(0, 0, 0, 0.43);
 $form-text-color: #333;
@@ -20,3 +24,12 @@ $alert-success-background-color: #DFF0D8;
 $alert-error-color: #A94442;
 $alert-error-border-color: #ebcccc;
 $alert-error-background-color: #f2dede;
+
+// ** ===== FONTS ===== ** //
+@import "http://webfonts.ru/import/notcourier.css";
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
+
+$roboto: 'Roboto', serif;
+$open-sans: 'Open Sans', sans-serif;
+$oswald : 'Oswald', sans-serif;
+$not-courier: 'NotCourierSans';

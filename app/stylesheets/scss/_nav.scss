@@ -1,29 +1,43 @@
 @import 'slide';
+@import 'settings';
 
+// ** ===== NAV STYLES ===== ** //
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin: 0;
   li {
     list-style-type: none;
     padding: 10px;
   }
   a {
     text-decoration: none;
-    color: black;
+    color: $link-color;
+    font-family: $oswald;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 2.5em;
   }
   .active {
     font-weight: bold;
   }
 }
 
+// ** === FULL SIZE NAV STYLES === ** //
+.full-nav {
+  padding: 0 20px 0 0;
+}
 
+// ** === MOBILE NAV STYLES === ** //
 .mobile-nav-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
 .mobile-nav {
-  transition: opacity 0.5s;
   .nav {
     flex-direction: column;
     text-align: center;
@@ -31,11 +45,15 @@
     height: 100%;
     width: 100%;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     justify-content: flex-start;
     padding: 10% 0 0 0;
     li {
       margin: 5%;
+    }
+    a {
+      font-size: 20px;
+      text-transform: uppercase;
     }
   }
 }
