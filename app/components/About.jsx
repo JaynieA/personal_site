@@ -31,7 +31,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <p>{this.state.name}</p>
         <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
         <p>{this.state.city}, {this.state.state_abbr}</p>
