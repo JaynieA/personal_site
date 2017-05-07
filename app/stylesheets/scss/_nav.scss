@@ -1,3 +1,5 @@
+@import 'slide';
+
 .nav {
   display: flex;
   justify-content: center;
@@ -13,6 +15,7 @@
     font-weight: bold;
   }
 }
+
 
 .mobile-nav-wrap {
   display: flex;
