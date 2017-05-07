@@ -47,10 +47,6 @@ body {
   .alert p {
     text-align: center; }
 
-.mobile-nav-wrap {
-  display: flex;
-  justify-content: flex-end; }
-
 .nav {
   display: flex;
   justify-content: center; }
@@ -63,10 +59,24 @@ body {
   .nav .active {
     font-weight: bold; }
 
-.mobile-nav .nav {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center; }
+.mobile-nav-wrap {
+  display: flex;
+  justify-content: flex-end; }
+
+.mobile-nav {
+  transition: opacity 0.5s; }
+  .mobile-nav .nav {
+    flex-direction: column;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.8);
+    justify-content: flex-start;
+    padding: 10% 0 0 0; }
+    .mobile-nav .nav li {
+      margin: 5%; }
 
 .hamburger {
   display: inline-block;

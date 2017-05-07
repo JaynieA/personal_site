@@ -1,7 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
-const collapseWidth = 1080;
+const collapseWidth = 768;
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class Nav extends React.Component {
       windowWidth: window.innerWidth,
       mobileNavVisible: false
     } // end this.state
-    console.log(this.state);
   } // end constructor
 
   handleResize = () => {
@@ -28,17 +28,17 @@ class Nav extends React.Component {
   navigationLinks = () => {
     return (
       <ul className="nav">
-        <li key={1}>
+        <li key={1} onClick={this.handleNavClick}>
           <NavLink exact activeClassName="active" to="/">
             About
           </NavLink>
         </li>
-        <li key={2}>
+        <li key={2} onClick={this.handleNavClick}>
           <NavLink activeClassName="active" to="/portfolio">
             Portfolio
           </NavLink>
         </li>
-        <li key={3}>
+        <li key={3} onClick={this.handleNavClick}>
           <NavLink activeClassName="active" to="/contact">
             Contact
           </NavLink>
