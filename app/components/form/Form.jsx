@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from './Button';
-import Alert from './Alert';
+import Button from '../Button';
+import Alert from '../Alert';
 
 const Form = (props) => (
   <div className='form-wrap'>

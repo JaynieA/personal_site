@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../components/Form';
-import SingleInput from '../components/SingleInput';
-import TextArea from '../components/TextArea';
+import Form from '../components/form/Form';
+import SingleInput from '../components/form/SingleInput';
+import TextArea from '../components/form/TextArea';
 import api from '../utils/api';
 
 class ContactFormContainer extends React.Component {

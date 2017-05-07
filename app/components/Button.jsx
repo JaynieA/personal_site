@@ -12,7 +12,7 @@ const Button = (props) => (
 
 Button.PropTypes = {
   type: PropTypes.oneOf(['button', 'submit']).isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   controlFunc: PropTypes.func,
   content: PropTypes.string.isRequired
 };

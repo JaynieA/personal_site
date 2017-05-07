@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactRouter, {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Nav from './Nav';
+
+import NavContainer from '../containers/NavContainer';
 import About from './About';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
@@ -10,7 +11,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Nav />
+          <NavContainer />
           <Switch>
             <Route exact path="/" component={About}/>
             <Route path="/portfolio" component={Portfolio}/>
