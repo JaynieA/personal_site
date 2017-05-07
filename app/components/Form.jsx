@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Button from './Button';
 import Alert from './Alert';
 
@@ -9,14 +10,14 @@ const Form = (props) => (
       {props.children}
       <Button
         type={'submit'}
-        className={props.btnClassName}
-        controlFunc={props.btnControlFunc}
-        content={props.btnText}
+        className={props.btnInfo.className}
+        controlFunc={props.btnInfo.controlFunc}
+        content={props.btnInfo.text}
       />
     {props.submitted &&
       <Alert
-        content={props.alert}
-        type={props.alertType}
+        text={props.alertInfo.text}
+        type={props.alertInfo.type}
       />
     }
     </form>
@@ -24,13 +25,17 @@ const Form = (props) => (
 )
 
 Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  btnClassName: PropTypes.string.isRequired,
-  btnControlFunc: PropTypes.func,
-  btnText: PropTypes.string.isRequired,
   submitted: PropTypes.bool.isRequired,
-  alert: PropTypes.string.isRequired,
-  alertType: PropTypes.oneOf(['success', 'error', 'default']).isRequired
+  onSubmit: PropTypes.func.isRequired,
+  btnInfo: PropTypes.shape({
+    className: PropTypes.string,
+    controlFunc: PropTypes.func,
+    text: PropTypes.string.isRequired
+  }),
+  alertInfo: PropTypes.shape({
+    type: PropTypes.oneOf(['success', 'error', 'default']).isRequired,
+    text: PropTypes.string.isRequired
+  })
 };
 
 export default Form;

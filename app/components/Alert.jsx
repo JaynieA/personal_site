@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const Alert = (props) => (
   <div className={`alert ${props.type}`}>
-    <p>{props.content}</p>
+    <p>{props.text}</p>
   </div>
 )
 
 Alert.propTypes = {
-  content: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['success', 'error', 'default']).isRequired
 }
 

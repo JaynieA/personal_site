@@ -1,19 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Form from '../components/Form';
 import SingleInput from '../components/SingleInput';
 import TextArea from '../components/TextArea';
 import api from '../utils/api';
-
-const validate = (state) => {
-  return {
-    firstName: state.firstName.length === 0,
-    lastName: state.lastName.length === 0,
-    email: state.email.length === 0,
-    subject: state.subject.length === 0,
-    message: state.message.length === 0
-  }; // end return
-} // end validate
 
 class ContactFormContainer extends React.Component {
   constructor(props) {
@@ -32,7 +23,7 @@ class ContactFormContainer extends React.Component {
         message: false
       }, // end touched,
       submitted: false,
-      alert: {
+      alertInfo: {
         type: 'default',
         text:'',
       },
@@ -41,7 +32,7 @@ class ContactFormContainer extends React.Component {
   } // end constructor
 
   canBeSubmitted = () => {
-    const errors = validate(this.state);
+    const errors = this.validate(this.state);
     const isEnabled = Object.keys(errors).some(x => errors[x]);
     //truthy if there are no errors
     return !isEnabled;
@@ -57,7 +48,7 @@ class ContactFormContainer extends React.Component {
     this.setState({
       submitted: true,
       btnText: 'Send',
-      alert: {
+      alertInfo: {
         type: 'success',
         text: 'Thank you! Your message has been sent.',
       } // end alert
@@ -100,10 +91,11 @@ class ContactFormContainer extends React.Component {
         subject: false,
         message: false
       }, // end touched
-      alert: {
+      alertInfo: {
         type: 'default',
         text:'',
-      }
+      },
+      btnText: 'Send'
     }); // end setState
   } // end handleClearForm
 
@@ -165,33 +157,46 @@ class ContactFormContainer extends React.Component {
     this.setState({
       submitted: true,
       btnText: 'Send',
-      alert: {
+      alertInfo: {
         type: 'error',
         text: 'Oops! There has been an error sending your email.',
       } // end alert
     }); // end setState
   } // end handleSubmissionError
 
+  shouldMarkError = (field) => {
+    const errors = this.validate(this.state);
+    const hasError = errors[field];
+    const shouldShow = this.state.touched[field];
+    return hasError ? shouldShow : false;
+  }; // end shouldMarkError
+
+  validate = (state) => {
+    return {
+      firstName: state.firstName.length === 0,
+      lastName: state.lastName.length === 0,
+      email: state.email.length === 0,
+      subject: state.subject.length === 0,
+      message: state.message.length === 0
+    }; // end return
+  } // end validate
+
   render() {
-    const errors = validate(this.state);
-    const submitted = this.state.submitted;
+    const errors = this.validate(this.state);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const shouldMarkError = (field) => {
-      const hasError = errors[field];
-      const shouldShow = this.state.touched[field];
-      return hasError ? shouldShow : false;
-    }; // end shouldMarkError
+    const btnInfo = {
+      className: isDisabled ? 'disabled' : '',
+      controlFunc: isDisabled ? this.handleDisabledClick : null,
+      text: this.state.btnText
+    } // end btnInfo
 
     return (
       <div className='container'>
         <Form
           onSubmit={this.handleSubmit}
-          btnClassName={'button ' + (isDisabled ? 'disabled' : '')}
-          btnControlFunc={isDisabled ? this.handleDisabledClick : null}
-          btnText={this.state.btnText}
-          submitted={submitted}
-          alert={this.state.alert.text}
-          alertType={this.state.alert.type}
+          btnInfo={btnInfo}
+          submitted={this.state.submitted}
+          alertInfo={this.state.alertInfo}
         >
           <SingleInput
             id={'contactFirstName'}
@@ -201,7 +206,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('firstName')}
             autoComplete={'off'}
             title={'First Name'}
-            className={shouldMarkError('firstName') ? 'error' : ''}
+            className={this.shouldMarkError('firstName') ? 'error' : ''}
             onBlur={this.handleBlur('firstName')}
           />
           <SingleInput
@@ -212,7 +217,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('lastName')}
             autoComplete={'off'}
             title={'Last Name'}
-            className={shouldMarkError('lastName') ? 'error' : ''}
+            className={this.shouldMarkError('lastName') ? 'error' : ''}
             onBlur={this.handleBlur('lastName')}
           />
           <SingleInput
@@ -223,7 +228,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('email')}
             autoComplete={'off'}
             title={'Email Address'}
-            className={shouldMarkError('email') ? 'error' : ''}
+            className={this.shouldMarkError('email') ? 'error' : ''}
             onBlur={this.handleBlur('email')}
           />
           <SingleInput
@@ -234,7 +239,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('subject')}
             autoComplete={'off'}
             title={'Subject'}
-            className={shouldMarkError('subject') ? 'error' : ''}
+            className={this.shouldMarkError('subject') ? 'error' : ''}
             onBlur={this.handleBlur('subject')}
           />
           <TextArea
@@ -246,7 +251,7 @@ class ContactFormContainer extends React.Component {
             controlFunc={this.handleFieldChange('message')}
             resize={true}
             title={'Message'}
-            className={shouldMarkError('message') ? 'error' : ''}
+            className={this.shouldMarkError('message') ? 'error' : ''}
             onBlur={this.handleBlur('message')}
           />
         </Form>
