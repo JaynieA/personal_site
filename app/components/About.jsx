@@ -2,6 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import api from '../utils/api';
 
+import TextSwap from './TextSwap';
+
+const titles = ['full stack web developer', 'software engineer', 'lifelong learner', 'programmer', 'innovator'];
+
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -32,12 +36,24 @@ class About extends React.Component {
   render() {
     return (
       <div className='container'>
-        <p>{this.state.name}</p>
-        <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
-        <p>{this.state.city}, {this.state.state_abbr}</p>
+        <h1>hi! I'm Jaynie, a <br/>
+          <TextSwap list={titles} speed={2000}/>
+          from {this.state.city}, {this.state.state_abbr}.
+        </h1>
+
+        <div className={'copy-wrap'}>
+          <p>With every line of code, I strive to make the web a better looking place...Jelly soufflé macaroon chupa chups tart sesame snaps. Bear claw cheesecake candy canes oat cake ice cream donut bonbon. Dragée carrot cake fruitcake cheesecake cookie. Cookie bonbon cake dessert jelly-o cake. Sweet roll cake ice cream. Marshmallow donut chocolate tart pie dragée powder pudding. Sweet dessert cookie gummies lemon drops caramels donut macaroon powder. </p>
+          <p>Soufflé caramels lemon drops gummies tiramisu candy canes biscuit bear claw. Cake chocolate bar candy ice cream pie lemon drops. Cake wafer halvah jelly beans liquorice jujubes sugar plum. Pie pastry fruitcake cotton candy. Soufflé candy sweet sesame snaps sweet roll apple pie sesame snaps.</p>
+        </div>
+
       </div>
     ) // end return
   } // end render
 } // end About
+
+// <p>{this.state.name}</p>
+// <p><a href={'mailto:' + this.state.email}>{this.state.email}</a></p>
+// <p>{this.state.city}, {this.state.state_abbr}</p>
+
 
 export default About;
