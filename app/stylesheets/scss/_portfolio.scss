@@ -1,0 +1,28 @@
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  //Column Grid Display Styles
+  // display: grid;
+  // justify-items: center;
+  // grid-gap: 40px;
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.portfolio-item {
+  text-align: center;
+  margin: 20px;
+  padding: 0;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.portfolio-item-wrap {
+  width: 250px;
+}
+
+@media (min-width: 923px) {
+  .portfolio-item-wrap {
+    width: 450px;
+  }
+}

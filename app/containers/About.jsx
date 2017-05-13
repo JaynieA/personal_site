@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import api from '../utils/api';
 
-import TextSwap from './TextSwap';
+import TextSwap from '../components/TextSwap';
 
 const titles = ['full stack web developer', 'software engineer', 'lifelong learner', 'programmer', 'innovator'];
 

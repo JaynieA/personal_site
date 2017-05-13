@@ -26,6 +26,14 @@ h1 {
   margin: 7% auto;
 }
 
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+}
+
 .container {
   max-width: 95%;
   margin: 0 auto;
@@ -33,6 +41,11 @@ h1 {
 
 .text-center {
   text-align: center;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }
 
 .copy-wrap {
@@ -88,3 +101,4 @@ h1 {
 
  @import 'nav';
  @import 'form';
+ @import 'portfolio';

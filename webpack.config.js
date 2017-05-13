@@ -24,7 +24,18 @@ let config = {
         }
       ]
     },
-    {test: /\.css$/, use: ['style-loader', 'css-loader'] }]
+    {test: /\.css$/, use: ['style-loader', 'css-loader'] },
+    {
+      test: /\.(jpg|png|svg)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 20000,
+          }
+        }
+      ]
+    }]
   },
   devServer: {
     historyApiFallback: true,

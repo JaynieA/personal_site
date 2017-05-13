@@ -2,8 +2,8 @@ import React from 'react';
 import ReactRouter, {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import NavContainer from '../containers/NavContainer';
-import About from './About';
-import Portfolio from './Portfolio';
+import About from '../containers/About';
+import Portfolio from '../containers/Portfolio';
 import Contact from './Contact';
 
 class App extends React.Component {

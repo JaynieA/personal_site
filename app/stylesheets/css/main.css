@@ -24,12 +24,22 @@ h1 {
   line-height: 1;
   margin: 7% auto; }
 
+li {
+  list-style-type: none; }
+
+ul {
+  padding: 0; }
+
 .container {
   max-width: 95%;
   margin: 0 auto; }
 
 .text-center {
   text-align: center; }
+
+.img-responsive {
+  max-width: 100%;
+  height: auto; }
 
 .copy-wrap {
   padding: 0 10%; }
@@ -226,5 +236,24 @@ h1 {
   font-weight: 700;
   font-size: 12px;
   transform: translate3d(-7px, -32px, 0); }
+
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.portfolio-item {
+  text-align: center;
+  margin: 20px;
+  padding: 0;
+  border: 1px solid black;
+  overflow: hidden; }
+
+.portfolio-item-wrap {
+  width: 250px; }
+
+@media (min-width: 923px) {
+  .portfolio-item-wrap {
+    width: 450px; } }
 
 /*# sourceMappingURL=main.css.map */
