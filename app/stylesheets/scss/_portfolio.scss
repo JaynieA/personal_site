@@ -13,16 +13,33 @@
   text-align: center;
   margin: 20px;
   padding: 0;
-  border: 1px solid black;
+  // box-shadow: 1px 1px 10px 1px $link-color;
   overflow: hidden;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .portfolio-item-wrap {
   width: 250px;
+  p {
+    color: $link-color;
+    text-transform: uppercase;
+  }
 }
 
-@media (min-width: 923px) {
+@media only screen and (min-width: 1100px) {
+  .portfolio-grid {
+    padding: 0 40px;
+  }
   .portfolio-item-wrap {
     width: 450px;
+  }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .portfolio-grid {
+    padding: 0 100px;
   }
 }

@@ -13,19 +13,19 @@ class Portfolio extends React.Component {
     const projects = [
       {
         name: 'Spot\'s Last Stop',
-        src: require('../assets/SLS.jpg')
+        src: require('../assets/SLS.png')
       },
       {
         name: 'Donation Manager',
-        src: require('../assets/donation-manager.jpg')
+        src: require('../assets/donation-manager.png')
       },
       {
         name: 'Eagle Reserve',
-        src: require('../assets/eagle-reserve.jpg')
+        src: require('../assets/eagle-reserve.png')
       },
       {
         name: 'Comstar eBay Store',
-        src: require('../assets/comstar-ebay.jpg')
+        src: require('../assets/comstar-ebay.png')
       }
     ];
     return (

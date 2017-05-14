@@ -11,12 +11,12 @@ const PortfolioGrid = (props) => (
                   className='portfolio-item'
                   >
                   <div className='portfolio-item-wrap'>
-                    <p>{project.name}</p>
                     <img
                       className='img-responsive'
                       src={project.src}
                       alt={'Image for ' + project.name}
                     />
+                    <p>{project.name}</p>
                   </div>
 
               </li>
