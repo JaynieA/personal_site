@@ -250,6 +250,8 @@ ul {
   transition: all 0.2s ease; }
   .portfolio-item:hover {
     opacity: 0.7; }
+  .portfolio-item a {
+    text-decoration: none; }
 
 .portfolio-item-wrap {
   width: 250px; }

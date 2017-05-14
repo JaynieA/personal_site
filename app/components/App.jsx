@@ -4,6 +4,7 @@ import ReactRouter, {BrowserRouter as Router, Route, Switch} from 'react-router-
 import NavContainer from '../containers/NavContainer';
 import About from '../containers/About';
 import Portfolio from '../containers/Portfolio';
+import PortfolioItem from '../containers/PortfolioItem';
 import Contact from './Contact';
 
 class App extends React.Component {
@@ -14,7 +15,8 @@ class App extends React.Component {
           <NavContainer />
           <Switch>
             <Route exact path="/" component={About}/>
-            <Route path="/portfolio" component={Portfolio}/>
+            <Route exact path="/portfolio" component={Portfolio}/>
+            <Route exact path="/portfolio/:value" component={PortfolioItem}/>
             <Route path="/contact" component={Contact}/>
           </Switch>
         </div>
