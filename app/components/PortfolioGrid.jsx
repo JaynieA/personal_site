@@ -8,7 +8,7 @@ const PortfolioGrid = (props) => (
       {props.projects.map(function(project, index) {
           return (
               <li
-                  key={project.name}
+                  key={project.key}
                   className='portfolio-item'
                   >
                   <Link to={`/portfolio/${ project.url }`}>

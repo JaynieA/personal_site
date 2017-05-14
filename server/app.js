@@ -21,4 +21,7 @@ app.use('/contact', contactRoute);
 const emailRoute = require('./routers/emailRoute');
 app.use('/email', emailRoute);
 
+const portfolioRoute = require('./routers/portfolioRoute');
+app.use ('/portfolio', portfolioRoute);
+
 module.exports = app;
