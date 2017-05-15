@@ -8,17 +8,17 @@ const PortfolioGrid = (props) => (
       {props.projects.map(function(project, index) {
           return (
               <li
-                  key={project.key}
+                  key={project.id}
                   className='portfolio-item'
                   >
-                  <Link to={`/portfolio/${ project.url }`}>
+                  <Link to={`/portfolio/${ project.local_url }`}>
                       <div className='portfolio-item-wrap'>
                         <img
                           className='img-responsive'
-                          src={project.src}
-                          alt={'Image for ' + project.name}
+                          src={project.img_url}
+                          alt={'Image for ' + project.project_name}
                         />
-                        <p>{project.name}</p>
+                    <p>{project.project_name}</p>
                       </div>
                   </Link>
               </li>

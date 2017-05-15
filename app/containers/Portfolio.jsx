@@ -22,39 +22,12 @@ class Portfolio extends React.Component {
     }); // end getContactInfo
   } // end componentDidMount
   render() {
-    const projects = [
-      {
-        key: 1,
-        name: 'Spot\'s Last Stop Canine Rescue',
-        src: require('../assets/SLS.png'),
-        url: 'spots-last-stop'
-      },
-      {
-        key: 2,
-        name: 'Donation Manager',
-        src: require('../assets/donation-manager.png'),
-        url: 'donation-manager'
-      },
-      {
-        key: 3,
-        name: 'Eagle Reserve',
-        src: require('../assets/eagle-reserve.png'),
-        url: 'eagle-reserve'
-      },
-      {
-        key: 4,
-        name: 'Comstar eBay Store',
-        src: require('../assets/comstar-ebay.png'),
-        url: 'comstar-ebay'
-      }
-    ];
-    console.log('state.projects-->', this.state.projects);
     return (
       <div className='container'>
         <h1>Portfolio</h1>
         {!this.state.projects
-           ? <p>Loading</p>
-           : <PortfolioGrid projects={projects}/>}
+           ? <p className='text-center'>Loading...</p>
+           : <PortfolioGrid projects={this.state.projects}/>}
       </div>
     ) // end return
   } // end render

@@ -9,3 +9,11 @@ CREATE TABLE contact_info (
 	state VARCHAR(50) NOT NULL,
 	state_abbr VARCHAR(3) NOT NULL
 );
+
+CREATE TABLE portfolio (
+	id SERIAL PRIMARY KEY,
+	project_name VARCHAR(100) UNIQUE NOT NULL,
+	img_url VARCHAR(100) UNIQUE NOT NULL,
+	local_url VARCHAR(100) UNIQUE NOT NULL,
+	description TEXT NOT NULL
+);

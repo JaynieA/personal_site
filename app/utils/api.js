@@ -14,6 +14,13 @@ let api = {
       return response.data.results;
     });
   },
+  fetchPortfolioItemData: function(data) {
+    console.log(data);
+    return axios.get(`/api/portfolio/${data}`)
+    .then(function(response) {
+      return response.data.results;
+    });
+  },
   postContactForm: function(formPayload) {
     return axios.post('/api/email', formPayload)
     .then(function(response) {
