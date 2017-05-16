@@ -1,7 +1,7 @@
 import React from 'react';
 import api from '../utils/api';
 
-class PortfolioItem extends React.Component {
+class Project extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,9 +9,9 @@ class PortfolioItem extends React.Component {
     }; // end this.state
   } // end constructor
   componentDidMount() {
-    api.fetchPortfolioItemData(this.state.value)
+    api.fetchProjectData(this.state.value)
     .then((data) => {
-      console.log('api.fetchPortfolioItemData response-->', data);
+      console.log('api.fetchProjectData response-->', data);
       this.setState(function() {
         return {
           data: data
@@ -28,6 +28,6 @@ class PortfolioItem extends React.Component {
       </div>
     ) // end return
   } // end render
-} // end PortfolioItem
+} // end Project
 
-export default PortfolioItem;
+export default Project;

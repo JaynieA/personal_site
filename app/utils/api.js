@@ -14,7 +14,7 @@ let api = {
       return response.data.results;
     });
   },
-  fetchPortfolioItemData: function(data) {
+  fetchProjectData: function(data) {
     console.log(data);
     return axios.get(`/api/portfolio/${data}`)
     .then(function(response) {
