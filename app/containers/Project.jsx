@@ -1,6 +1,17 @@
 import React from 'react';
 import api from '../utils/api';
 
+import Loading from './Loading';
+
+let styles = {
+  img: {
+    height: '500px',
+    width: 'auto',
+    display: 'block',
+    margin: '0 auto'
+  }
+};
+
 class Project extends React.Component {
   constructor(props) {
     super(props);
@@ -22,9 +33,21 @@ class Project extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.data
-           ? <p className='text-center'>Loading...</p>
-           : <h1>{this.state.data.project_name}</h1>}
+        {!this.state.data &&
+          <Loading/> }
+
+        {this.state.data &&
+          <div>
+            <h1>{this.state.data.project_name}</h1>
+            <img
+              src={this.state.data.img_url}
+              alt={'Image for ' + this.state.data.project_name}
+              style={styles.img}
+              />
+            <p className={'text-center'}>{this.state.data.description}</p>
+          </div>
+        }
+
       </div>
     ) // end return
   } // end render
