@@ -22,6 +22,8 @@ class Portfolio extends React.Component {
     }); // end getContactInfo
   } // end componentDidMount
   render() {
+
+    console.log(this.state.projects);
     return (
       <div className='container'>
         <h1>Portfolio</h1>

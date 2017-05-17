@@ -40,7 +40,7 @@ class Project extends React.Component {
           <div>
             <h1>{this.state.data.project_name}</h1>
             <img
-              src={this.state.data.img_url}
+              src={this.state.data.thumbnail}
               alt={'Image for ' + this.state.data.project_name}
               style={styles.img}
               />

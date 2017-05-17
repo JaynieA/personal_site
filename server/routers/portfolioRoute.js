@@ -16,7 +16,8 @@ router.get('/', function(req, res) {
        console.log(err);
        res.sendStatus(500);
      } else {
-       let query = client.query("SELECT id, project_name, img_url, local_url FROM portfolio");
+      //  let query = client.query("SELECT id, project_name, img_url, local_url FROM portfolio ORDER BY id");
+       let query = client.query('SELECT id, project_name, local_url, portfolio_images.thumbnail AS thumbnail FROM portfolio INNER JOIN portfolio_images ON id = portfolio_id  ORDER BY id;');
        query.on('row', function(row) {
          results.push(row);
        }); // end on
@@ -38,7 +39,8 @@ router.get('/:item', function(req, res) {
        console.log(err);
        res.sendStatus(500);
      } else {
-       let query = client.query("SELECT * FROM portfolio WHERE local_url = $1", [portfolioItem]);
+       let query = client.query("SELECT id, project_name, description, thumbnail, img_1, img_2, img_3 FROM portfolio  INNER JOIN portfolio_images ON id=portfolio_id WHERE local_url = $1;", [portfolioItem]);
+
        query.on('row', function(row) {
          results = row;
        }); // end on

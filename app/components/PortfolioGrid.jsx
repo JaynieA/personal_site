@@ -15,7 +15,7 @@ const PortfolioGrid = (props) => (
                       <div className='portfolio-item-wrap'>
                         <img
                           className='img-responsive'
-                          src={project.img_url}
+                          src={project.thumbnail}
                           alt={'Image for ' + project.project_name}
                         />
                     <p>{project.project_name}</p>
