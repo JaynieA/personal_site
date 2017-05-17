@@ -13,8 +13,7 @@ CREATE TABLE contact_info (
 CREATE TABLE portfolio (
 	id SERIAL PRIMARY KEY,
 	project_name VARCHAR(100) UNIQUE NOT NULL,
-	local_url VARCHAR(100) UNIQUE NOT NULL,
-	description TEXT NOT NULL
+	local_url VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE portfolio_images (

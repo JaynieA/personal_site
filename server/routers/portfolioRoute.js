@@ -39,7 +39,8 @@ router.get('/:item', function(req, res) {
        console.log(err);
        res.sendStatus(500);
      } else {
-       let query = client.query("SELECT id, project_name, description, thumbnail, img_1, img_2, img_3 FROM portfolio  INNER JOIN portfolio_images ON id=portfolio_id WHERE local_url = $1;", [portfolioItem]);
+       let query = client.query(`SELECT id, project_name, description, thumbnail, img_1, img_2, img_3, role, technologies, description, project_url FROM portfolio
+       INNER JOIN portfolio_images ON portfolio.id=portfolio_images.portfolio_id INNER JOIN project_specs ON portfolio.id=project_specs.portfolio_id WHERE local_url = $1;`, [portfolioItem]);
 
        query.on('row', function(row) {
          results = row;

@@ -44,7 +44,9 @@ class Project extends React.Component {
               alt={'Image for ' + this.state.data.project_name}
               style={styles.img}
               />
-            <p className={'text-center'}>{this.state.data.description}</p>
+            <p className={'text-center'}>Role: {this.state.data.role}</p>
+            <p className={'text-center'}>Description: {this.state.data.description}</p>
+            <p className={'text-center'}>Technologies Used: {this.state.data.technologies}</p>
           </div>
         }
 
