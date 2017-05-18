@@ -19,7 +19,5 @@ CREATE TABLE portfolio (
 CREATE TABLE portfolio_images (
 	portfolio_id INT PRIMARY KEY,
 	thumbnail VARCHAR(100) UNIQUE NOT NULL,
-	img_1 VARCHAR(100) UNIQUE NOT NULL,
-	img_2 VARCHAR(100) UNIQUE NOT NULL,
-	img_3 VARCHAR(100) UNIQUE NOT NULL
+	url_array text[] UNIQUE NOT NULL;
 );
