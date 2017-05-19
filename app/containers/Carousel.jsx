@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FaArrowRight from 'react-icons/fa/arrow-right';
+import FaArrowLeft from 'react-icons/fa/arrow-left';
 
 const styles = {
   img: {
@@ -12,12 +14,14 @@ const styles = {
     float: 'right',
     width: '50%',
     display: 'inline',
-    textAlign: 'right'
+    textAlign: 'right',
+    cursor: 'pointer'
   },
   back: {
     float: 'left',
     width: '50%',
-    display: 'inline'
+    display: 'inline',
+    cursor: 'pointer'
   }
 }; // end styles
 
@@ -63,16 +67,14 @@ class Carousel extends React.Component {
           src={this.props.images[this.state.current]}
           alt={'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         />
-        <p
+        <FaArrowLeft
           onClick={this.handleBackwardClick}
           style={styles.back}
-          > BACK
-        </p>
-        <p
+        />
+        <FaArrowRight
           onClick={this.handleForwardClick}
           style={styles.fwd}
-          >FORWARD >>>
-        </p>
+        />
         <p className={'text-center'}>
           {'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         </p>
