@@ -2,15 +2,7 @@ import React from 'react';
 import api from '../utils/api';
 
 import Loading from './Loading';
-
-let styles = {
-  img: {
-    height: '500px',
-    width: 'auto',
-    display: 'block',
-    margin: '0 auto'
-  }
-};
+import Carousel from './Carousel';
 
 class Project extends React.Component {
   constructor(props) {
@@ -39,17 +31,12 @@ class Project extends React.Component {
         {this.state.data &&
           <div>
             <h1>{this.state.data.project_name}</h1>
-            <img
-              src={this.state.data.thumbnail}
-              alt={'Image for ' + this.state.data.project_name}
-              style={styles.img}
-              />
+            <Carousel images={this.state.data.img_urls}/>
             <p className={'text-center'}>Role: {this.state.data.role}</p>
             <p className={'text-center'}>Description: {this.state.data.description}</p>
             <p className={'text-center'}>Technologies Used: {this.state.data.technologies}</p>
           </div>
         }
-
       </div>
     ) // end return
   } // end render
