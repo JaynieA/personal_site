@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FaArrowRight from 'react-icons/fa/arrow-right';
-import FaArrowLeft from 'react-icons/fa/arrow-left';
+import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
+import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left';
+import FaCircle from 'react-icons/fa/circle';
 
 const styles = {
   img: {
@@ -22,6 +23,10 @@ const styles = {
     width: '50%',
     display: 'inline',
     cursor: 'pointer'
+  },
+  faBtn: {
+    color: 'grey',
+    margin: '5px'
   }
 }; // end styles
 
@@ -67,17 +72,27 @@ class Carousel extends React.Component {
           src={this.props.images[this.state.current]}
           alt={'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         />
-        <FaArrowLeft
+        <FaAngleDoubleLeft
           onClick={this.handleBackwardClick}
           style={styles.back}
         />
-        <FaArrowRight
+       <FaAngleDoubleRight
           onClick={this.handleForwardClick}
           style={styles.fwd}
         />
+
         <p className={'text-center'}>
           {'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         </p>
+
+        <div className={'text-center'}>
+          {this.props.images.map((image, index)=>{
+            return (
+              <FaCircle key={index} style={styles.faBtn}/>
+            )
+          })}
+        </div>
+
       </div>
     ) // end return
   } // end render
