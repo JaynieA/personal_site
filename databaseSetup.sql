@@ -21,3 +21,11 @@ CREATE TABLE portfolio_images (
 	thumbnail VARCHAR(100) UNIQUE NOT NULL,
 	url_array text[] UNIQUE NOT NULL;
 );
+
+CREATE TABLE project_specs (
+	portfolio_id INT PRIMARY KEY,
+	role VARCHAR(100) UNIQUE NOT NULL,
+	technologies TEXT[] UNIQUE NOT NULL,
+	description VARCHAR(200) UNIQUE NOT NULL,
+	project_url VARCHAR(100) UNIQUE
+);

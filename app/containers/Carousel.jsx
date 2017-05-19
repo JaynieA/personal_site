@@ -19,7 +19,7 @@ const styles = {
     width: '50%',
     display: 'inline'
   }
-};
+}; // end styles
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -27,17 +27,17 @@ class Carousel extends React.Component {
     this.state = {
       current: null,
       max: null
-    }
-  }
+    } // end this.state
+  } // end constructor
   componentDidMount() {
     this.setState(()=>{
       const max = this.props.images.length - 1;
       return {
         current: 0,
         max: max
-      }
-    })
-  }
+      } // end return
+    }) // end setState
+  } // end componentDidMount
   handleForwardClick = () => {
     console.log('handleForwardClick');
     let newImg;
@@ -45,7 +45,7 @@ class Carousel extends React.Component {
      ? newImg = this.state.current + 1
      : newImg = 0
     this.setState({current: newImg});
-  }
+  } // end handleForwardClick
   handleBackwardClick = () => {
     console.log('in handleBackwardClick');
     let newImg;
@@ -54,7 +54,7 @@ class Carousel extends React.Component {
      ? newImg = this.state.max
      : newImg = this.state.current - 1
     this.setState({current: newImg});
-  }
+  } // end handleBackwardClick
   render() {
     return (
       <div>
@@ -73,14 +73,13 @@ class Carousel extends React.Component {
           style={styles.fwd}
           >FORWARD >>>
         </p>
-
         <p className={'text-center'}>
           {'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         </p>
       </div>
-    )
-  }
-}
+    ) // end return
+  } // end render
+} // end Carousel
 
 Carousel.propTypes = {
     images: PropTypes.array.isRequired

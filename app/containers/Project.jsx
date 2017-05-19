@@ -3,6 +3,7 @@ import api from '../utils/api';
 
 import Loading from './Loading';
 import Carousel from './Carousel';
+import TextList from '../components/TextList';
 
 class Project extends React.Component {
   constructor(props) {
@@ -34,7 +35,8 @@ class Project extends React.Component {
             <Carousel images={this.state.data.img_urls}/>
             <p className={'text-center'}>Role: {this.state.data.role}</p>
             <p className={'text-center'}>Description: {this.state.data.description}</p>
-            <p className={'text-center'}>Technologies Used: {this.state.data.technologies}</p>
+            <p className={'text-center'}>Technologies Used:</p>
+            <TextList items={this.state.data.technologies}/>
           </div>
         }
       </div>

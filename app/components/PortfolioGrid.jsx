@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const PortfolioGrid = (props) => (
 
     <ul className='portfolio-grid'>
-      {props.projects.map(function(project, index) {
+      {props.projects.map((project, index) => {
           return (
               <li
                   key={project.id}
