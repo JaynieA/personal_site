@@ -9,8 +9,7 @@ class Carousel extends React.Component {
     super(props);
     this.state = {
       current: null,
-      max: null,
-      activeKey: 0
+      max: null
     } // end this.state
   } // end constructor
   componentDidMount() {
@@ -23,7 +22,6 @@ class Carousel extends React.Component {
     }) // end setState
   } // end componentDidMount
   handleForwardClick = () => {
-    console.log('handleForwardClick');
     let newImg;
     this.state.current < this.state.max
      ? newImg = this.state.current + 1
@@ -31,7 +29,6 @@ class Carousel extends React.Component {
     this.setState({current: newImg});
   } // end handleForwardClick
   handleBackwardClick = () => {
-    console.log('in handleBackwardClick');
     let newImg;
     let min = 0;
     this.state.current === min
@@ -40,10 +37,8 @@ class Carousel extends React.Component {
     this.setState({current: newImg});
   } // end handleBackwardClick
   handleDotClick = (index) => {
-    console.log('handleDotClick', index);
     this.setState({
-      current: index,
-      activeKey: index
+      current: index
     })
   } // end handleDotClick
   render() {
@@ -52,7 +47,7 @@ class Carousel extends React.Component {
         <img
           className={'carousel-image'}
           src={this.props.images[this.state.current]}
-          alt={'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
+          alt={'Image '+ (this.state.current + 1) + ' of ' + (this.state.max + 1)}
         />
         <FaAngleDoubleLeft
           onClick={this.handleBackwardClick}
@@ -62,10 +57,9 @@ class Carousel extends React.Component {
           onClick={this.handleForwardClick}
           className={'carousel-button fwd'}
         />
-
-      <div className={'dot-wrap'}>
+       <div className={'dot-wrap'}>
           {this.props.images.map((image, index) => {
-            const className = this.state.activeKey === index ? 'dot active' : 'dot';
+            const className = this.state.current === index ? 'dot active' : 'dot';
             return (
               <FaCircle
                 key={index}
@@ -75,7 +69,6 @@ class Carousel extends React.Component {
             )
           })}
         </div>
-
       </div>
     ) // end return
   } // end render
