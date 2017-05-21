@@ -4,6 +4,8 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
 @import "http://webfonts.ru/import/notcourier.css";
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
+@import "http://webfonts.ru/import/notcourier.css";
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
 body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
@@ -269,6 +271,35 @@ ul {
 @media only screen and (min-width: 1200px) {
   .portfolio-grid {
     padding: 0 100px; } }
+.carousel-image {
+  height: 400px;
+  width: auto;
+  display: block;
+  margin: 0 auto 15px; }
+
+.dot-wrap {
+  width: 30%;
+  margin: 0 auto;
+  text-align: center; }
+
+.dot {
+  cursor: pointer;
+  margin: 0 5px 10px;
+  color: rgba(0, 0, 0, 0.43); }
+  .dot.active {
+    color: rgba(77, 77, 77, 0.43); }
+
+.carousel-button {
+  cursor: pointer;
+  width: 30%;
+  display: inline; }
+  .carousel-button.back {
+    float: left;
+    text-align: left; }
+  .carousel-button.fwd {
+    float: right;
+    text-align: right; }
+
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {

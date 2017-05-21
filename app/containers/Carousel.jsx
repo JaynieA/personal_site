@@ -4,38 +4,13 @@ import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
 import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left';
 import FaCircle from 'react-icons/fa/circle';
 
-const styles = {
-  img: {
-    height: '400px',
-    width: 'auto',
-    display: 'block',
-    margin: '0 auto'
-  },
-  fwd: {
-    float: 'right',
-    width: '50%',
-    display: 'inline',
-    textAlign: 'right',
-    cursor: 'pointer'
-  },
-  back: {
-    float: 'left',
-    width: '50%',
-    display: 'inline',
-    cursor: 'pointer'
-  },
-  faBtn: {
-    color: 'grey',
-    margin: '5px'
-  }
-}; // end styles
-
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       current: null,
-      max: null
+      max: null,
+      activeKey: 0
     } // end this.state
   } // end constructor
   componentDidMount() {
@@ -64,31 +39,39 @@ class Carousel extends React.Component {
      : newImg = this.state.current - 1
     this.setState({current: newImg});
   } // end handleBackwardClick
+  handleDotClick = (index) => {
+    console.log('handleDotClick', index);
+    this.setState({
+      current: index,
+      activeKey: index
+    })
+  } // end handleDotClick
   render() {
     return (
       <div>
         <img
-          style={styles.img}
+          className={'carousel-image'}
           src={this.props.images[this.state.current]}
           alt={'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
         />
         <FaAngleDoubleLeft
           onClick={this.handleBackwardClick}
-          style={styles.back}
+          className={'carousel-button back'}
         />
        <FaAngleDoubleRight
           onClick={this.handleForwardClick}
-          style={styles.fwd}
+          className={'carousel-button fwd'}
         />
 
-        <p className={'text-center'}>
-          {'Image '+ (this.state.current+1) + ' of ' + (this.state.max+1)}
-        </p>
-
-        <div className={'text-center'}>
-          {this.props.images.map((image, index)=>{
+      <div className={'dot-wrap'}>
+          {this.props.images.map((image, index) => {
+            const className = this.state.activeKey === index ? 'dot active' : 'dot';
             return (
-              <FaCircle key={index} style={styles.faBtn}/>
+              <FaCircle
+                key={index}
+                onClick={() => this.handleDotClick(index)}
+                className={className}
+                />
             )
           })}
         </div>
