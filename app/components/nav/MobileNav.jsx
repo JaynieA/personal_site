@@ -23,7 +23,7 @@ const MobileNav = (props) => {
         </div>
       </div>
       <CSSTransitionGroup
-        transitionName="slide"
+        transitionName="vertical-slide"
         transitionEnterTimeout={300}
         transitionLeaveTimeout={300}
         component={FirstChild}>

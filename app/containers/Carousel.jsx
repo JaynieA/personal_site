@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
 import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left';
 import FaCircle from 'react-icons/fa/circle';
+import {CSSTransitionGroup} from 'react-transition-group';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -42,13 +43,29 @@ class Carousel extends React.Component {
     })
   } // end handleDotClick
   render() {
+
+    const CarouselImage =
+      <img
+        key={this.state.current}
+        className={'carousel-image'}
+        src={this.props.images[this.state.current]}
+        alt={'Image '+ (this.state.current + 1) + ' of ' + (this.state.max + 1)}
+      />;
+
     return (
       <div>
-        <img
-          className={'carousel-image'}
-          src={this.props.images[this.state.current]}
-          alt={'Image '+ (this.state.current + 1) + ' of ' + (this.state.max + 1)}
-        />
+
+        <div className={'carousel-image-container'}>
+          <CSSTransitionGroup
+            transitionName="horizontal-slide"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={300}>
+            {CarouselImage}
+          </CSSTransitionGroup>
+        </div>
+
+
+
         <FaAngleDoubleLeft
           onClick={this.handleBackwardClick}
           className={'carousel-button back'}

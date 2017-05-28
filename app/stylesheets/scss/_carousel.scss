@@ -1,10 +1,20 @@
 @import 'settings';
+@import 'horizontalSlide';
+
+.carousel-image-container {
+  position: relative;
+  height: 420px;
+  width: auto;
+}
 
 .carousel-image {
   height: 400px;
   width: auto;
   display: block;
   margin: 0 auto 15px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .dot-wrap {
