@@ -10,7 +10,8 @@ class Carousel extends React.Component {
     super(props);
     this.state = {
       current: null,
-      max: null
+      max: null,
+      transition: 'right-slide'
     } // end this.state
   } // end constructor
   componentDidMount() {
@@ -27,7 +28,10 @@ class Carousel extends React.Component {
     this.state.current < this.state.max
      ? newImg = this.state.current + 1
      : newImg = 0
-    this.setState({current: newImg});
+    this.setState({
+      current: newImg,
+      transition: 'right-slide'
+    });
   } // end handleForwardClick
   handleBackwardClick = () => {
     let newImg;
@@ -35,12 +39,20 @@ class Carousel extends React.Component {
     this.state.current === min
      ? newImg = this.state.max
      : newImg = this.state.current - 1
-    this.setState({current: newImg});
+    this.setState({
+      transition: 'left-slide',
+      current: newImg
+    }); // end setState
   } // end handleBackwardClick
   handleDotClick = (index) => {
+    let transition;
+    index >= this.state.current
+      ? transition = 'right-slide'
+      : transition = 'left-slide'
     this.setState({
-      current: index
-    })
+      current: index,
+      transition: transition
+    }); // end setState
   } // end handleDotClick
   render() {
 
@@ -54,18 +66,14 @@ class Carousel extends React.Component {
 
     return (
       <div>
-
         <div className={'carousel-image-container'}>
           <CSSTransitionGroup
-            transitionName="horizontal-slide"
+            transitionName={this.state.transition}
             transitionEnterTimeout={300}
             transitionLeaveTimeout={300}>
             {CarouselImage}
           </CSSTransitionGroup>
         </div>
-
-
-
         <FaAngleDoubleLeft
           onClick={this.handleBackwardClick}
           className={'carousel-button back'}

@@ -1,0 +1,53 @@
+// ** ===== HORIZONTAL SLIDE TRANSITIONS ===== ** //
+
+//Right Slide
+.right-slide-enter {
+  @include slide-enter(250px, 0);
+}
+
+.right-slide-enter.right-slide-enter-active {
+	@include slide-enter-active(500ms);
+}
+
+.right-slide-leave {
+	@include slide-leave(500ms);
+}
+
+.right-slide-leave.right-slide-leave-active {
+	@include slide-leave-active(-250px, 0);
+}
+
+//Left Slide
+.left-slide-enter {
+  @include slide-enter(-250px, 0);
+}
+
+.left-slide-enter.left-slide-enter-active {
+	@include slide-enter-active(500ms);
+}
+
+.left-slide-leave {
+	@include slide-leave(500ms);
+}
+
+.left-slide-leave.left-slide-leave-active {
+	@include slide-leave-active(250px, 0);
+}
+
+// ** ===== VERTICAL SLIDE TRANSITION ===== ** //
+
+.vertical-slide-enter {
+	@include slide-enter(0, -250px);
+}
+
+.vertical-slide-enter.vertical-slide-enter-active {
+	@include slide-enter-active(300ms);
+}
+
+.vertical-slide-leave {
+	@include slide-leave(300ms);
+}
+
+.vertical-slide-leave.vertical-slide-leave-active {
+	@include slide-leave-active(0, -250px);
+}
