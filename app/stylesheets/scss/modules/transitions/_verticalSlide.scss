@@ -1,0 +1,16 @@
+//Vertical Slide Transition
+.vertical-slide-enter {
+	@include slide-enter(0, -250px);
+}
+
+.vertical-slide-enter.vertical-slide-enter-active {
+	@include slide-enter-active(300ms);
+}
+
+.vertical-slide-leave {
+	@include slide-leave(300ms);
+}
+
+.vertical-slide-leave.vertical-slide-leave-active {
+	@include slide-leave-active(0, -250px);
+}

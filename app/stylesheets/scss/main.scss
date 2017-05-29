@@ -1,105 +1,14 @@
-@import 'settings';
+// Moduls and Variables
+@import 'modules/settings';
+@import 'modules/tools';
+//Transitions
+@import 'modules/transitions/verticalSlide';
+@import 'modules/transitions/horizontalSlide';
 
-// ** ===== GENERAL STYLES ===== ** //
-
-body {
-  font-family: $open-sans;
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-h1 {
-  font-family: $not-courier;
-  font-size: 20px;
-  text-align: center;
-  color: $h1-color;
-  font-weight: normal;
-  text-transform: uppercase;
-  line-height: 1;
-  margin: 7% auto;
-}
-
-li {
-  list-style-type: none;
-}
-
-ul {
-  padding: 0;
-}
-
-.container {
-  max-width: 95%;
-  margin: 0 auto;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.img-responsive {
-  max-width: 100%;
-  height: auto;
-}
-
-.copy-wrap {
-  padding: 0 10%;
-  p {
-    text-indent: 15px;
-  }
-}
-
-.button {
-  color: $button-text-color;
-  background: $button-background-color;
-  border: none;
-  font-size: 16px;
-  border-radius: 3px;
-  width: 200px;
-  text-align: center;
-  display: block;
-  padding: 7px 0;
-  margin: 10px auto;
-
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: translateY(1px);
-  }
-  &.disabled {
-    cursor: no-drop;
-    background: lighten($button-background-color, 50%);
-  }
-}
-
-.alert {
-  width: 100%;
-  border: 1px solid black;
-  color: black;
-  font-weight: bold;
-  &.success {
-    color: $alert-success-color;
-    background-color: $alert-success-background-color;
-    border-color: $alert-success-border-color;
-  }
-  &.error {
-    color: $alert-error-color;
-    background-color: $alert-error-background-color;
-    border-color: $alert-error-border-color;
-  }
-  p {
-    text-align: center;
-  }
-}
-
- @import 'nav';
- @import 'form';
- @import 'portfolio';
- @import 'carousel';
- @import 'responsive';
+//Partials
+@import 'partials/base';
+ @import 'partials/nav';
+ @import 'partials/form';
+ @import 'partials/portfolio';
+ @import 'partials/carousel';
+ @import 'partials/responsive';

@@ -1,0 +1,16 @@
+//Horizontal Slide Transition
+.horizontal-slide-enter {
+  @include slide-enter(250px, 0);
+}
+
+.horizontal-slide-enter.horizontal-slide-enter-active {
+	@include slide-enter-active(500ms);
+}
+
+.horizontal-slide-leave {
+	@include slide-leave(500ms);
+}
+
+.horizontal-slide-leave.horizontal-slide-leave-active {
+	@include slide-leave-active(-250px, 0);
+}

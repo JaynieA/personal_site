@@ -1,11 +1,59 @@
 @import "http://webfonts.ru/import/notcourier.css";
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
-@import "http://webfonts.ru/import/notcourier.css";
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
-@import "http://webfonts.ru/import/notcourier.css";
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
-@import "http://webfonts.ru/import/notcourier.css";
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Open+Sans:400italic,700italic,400,700|family=Oswald:300,400,600);
+.vertical-slide-enter {
+  opacity: 0;
+  transform: translate(0, -250px);
+  transform: translate3d(0, -250px, 0); }
+
+.vertical-slide-enter.vertical-slide-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease;
+  transform: translate(0, 0);
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
+
+.vertical-slide-leave {
+  opacity: 1;
+  transform: translate(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
+
+.vertical-slide-leave.vertical-slide-leave-active {
+  opacity: 0;
+  transform: translate(0, -250px);
+  transform: translate3d(0, -250px, 0); }
+
+.horizontal-slide-enter {
+  opacity: 0;
+  transform: translate(250px, 0);
+  transform: translate3d(250px, 0, 0); }
+
+.horizontal-slide-enter.horizontal-slide-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease;
+  transform: translate(0, 0);
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
+
+.horizontal-slide-leave {
+  opacity: 1;
+  transform: translate(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
+
+.horizontal-slide-leave.horizontal-slide-leave-active {
+  opacity: 0;
+  transform: translate(-250px, 0);
+  transform: translate3d(-250px, 0, 0); }
+
 body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
@@ -82,33 +130,6 @@ ul {
     border-color: #ebcccc; }
   .alert p {
     text-align: center; }
-
-.vertical-slide-enter {
-  opacity: 0;
-  transform: translate(0, -250px);
-  transform: translate3d(0, -250px, 0); }
-
-.vertical-slide-enter.vertical-slide-enter-active {
-  opacity: 1;
-  transition: opacity 1s ease;
-  transform: translate(0, 0);
-  transform: translate3d(0, 0, 0);
-  transition-property: transform, opacity;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
-
-.vertical-slide-leave {
-  opacity: 1;
-  transform: translate(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  transition-property: transform, opacity;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
-
-.vertical-slide-leave.vertical-slide-leave-active {
-  opacity: 0;
-  transform: translate(0, -250px);
-  transform: translate3d(0, -250px, 0); }
 
 .nav {
   display: flex;
@@ -271,33 +292,6 @@ ul {
 @media only screen and (min-width: 1200px) {
   .portfolio-grid {
     padding: 0 100px; } }
-.horizontal-slide-enter {
-  opacity: 0;
-  transform: translate(250px, 0);
-  transform: translate3d(250px, 0, 0); }
-
-.horizontal-slide-enter.horizontal-slide-enter-active {
-  opacity: 1;
-  transition: opacity 1s ease;
-  transform: translate(0, 0);
-  transform: translate3d(0, 0, 0);
-  transition-property: transform, opacity;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
-
-.horizontal-slide-leave {
-  opacity: 1;
-  transform: translate(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  transition-property: transform, opacity;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear; }
-
-.horizontal-slide-leave.horizontal-slide-leave-active {
-  opacity: 0;
-  transform: translate(-250px, 0);
-  transform: translate3d(-250px, 0, 0); }
-
 .carousel-image-container {
   position: relative;
   height: 420px;
