@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right';
-import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left';
+import FaAngleRight from 'react-icons/lib/fa/angle-right';
+import FaAngleLeft from 'react-icons/lib/fa/angle-left';
 import FaCircle from 'react-icons/fa/circle';
 import {CSSTransitionGroup} from 'react-transition-group';
 
@@ -55,7 +55,6 @@ class Carousel extends React.Component {
     }); // end setState
   } // end handleDotClick
   render() {
-
     const CarouselImage =
       <img
         key={this.state.current}
@@ -63,28 +62,33 @@ class Carousel extends React.Component {
         src={this.props.images[this.state.current]}
         alt={'Image '+ (this.state.current + 1) + ' of ' + (this.state.max + 1)}
       />;
-
     return (
       <div>
-        <div className={'carousel-image-container'}>
+        <div className={'carousel-slider-container'}>
+          <div
+            className={'carousel-control-wrap'}
+            onClick={this.handleBackwardClick}>
+            <FaAngleLeft className={'carousel-button'}/>
+          </div>
+
           <CSSTransitionGroup
             transitionName={this.state.transition}
             transitionEnterTimeout={300}
             transitionLeaveTimeout={300}>
             {CarouselImage}
           </CSSTransitionGroup>
+
+          <div
+            className={'carousel-control-wrap'}
+            onClick={this.handleForwardClick}>
+            <FaAngleRight className={'carousel-button'}/>
+            
+         </div>
         </div>
-        <FaAngleDoubleLeft
-          onClick={this.handleBackwardClick}
-          className={'carousel-button back'}
-        />
-       <FaAngleDoubleRight
-          onClick={this.handleForwardClick}
-          className={'carousel-button fwd'}
-        />
-       <div className={'dot-wrap'}>
+
+       <div className={'carousel-dot-wrap'}>
           {this.props.images.map((image, index) => {
-            const className = this.state.current === index ? 'dot active' : 'dot';
+            const className = this.state.current === index ? 'carousel-dot active' : 'carousel-dot';
             return (
               <FaCircle
                 key={index}

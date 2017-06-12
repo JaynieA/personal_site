@@ -319,12 +319,13 @@ ul {
 @media only screen and (min-width: 1200px) {
   .portfolio-grid {
     padding: 0 100px; } }
-.carousel-image-container {
+.carousel-slider-container {
   position: relative;
   height: 420px;
   width: auto; }
 
 .carousel-image {
+  z-index: 1;
   height: 400px;
   width: auto;
   display: block;
@@ -333,28 +334,44 @@ ul {
   left: 0;
   right: 0; }
 
-.dot-wrap {
+.carousel-control-wrap {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  z-index: 2; }
+  .carousel-control-wrap:hover {
+    background-color: #ccc; }
+  .carousel-control-wrap:first-of-type {
+    left: 0; }
+  .carousel-control-wrap:last-of-type {
+    right: 0; }
+
+.carousel-button-wrap {
+  height: 40%;
+  position: relative;
+  margin-top: 30%;
+  background-color: blue;
+  border-radius: 50%; }
+
+.carousel-button {
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%); }
+
+.carousel-dot-wrap {
   width: 30%;
   margin: 0 auto;
   text-align: center; }
 
-.dot {
+.carousel-dot {
   cursor: pointer;
   margin: 0 5px 10px;
   color: rgba(0, 0, 0, 0.43); }
-  .dot.active {
+  .carousel-dot.active {
     color: rgba(77, 77, 77, 0.43); }
-
-.carousel-button {
-  cursor: pointer;
-  width: 30%;
-  display: inline; }
-  .carousel-button.back {
-    float: left;
-    text-align: left; }
-  .carousel-button.fwd {
-    float: right;
-    text-align: right; }
 
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */

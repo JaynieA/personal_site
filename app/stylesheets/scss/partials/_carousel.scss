@@ -1,11 +1,12 @@
 // ** ===== IMAGE CAROUSEL STYLES ===== ** //
-.carousel-image-container {
+.carousel-slider-container {
   position: relative;
   height: 420px;
   width: auto;
 }
 
 .carousel-image {
+  z-index: 1;
   height: 400px;
   width: auto;
   display: block;
@@ -15,31 +16,44 @@
   right: 0;
 }
 
-.dot-wrap {
-  width: 30%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.dot {
+//Carousel Button Controls
+.carousel-control-wrap {
+  width: 20%;
+  height: 100%;
+  position: absolute;
   cursor: pointer;
-  margin: 0 5px 10px;
-  color: $dot-background-color;
-  &.active {
-    color: lighten($dot-background-color, 30%);
+  z-index: 2;
+  &:hover {
+    background-color: #ccc;
+  }
+  &:first-of-type {
+    left: 0;
+  }
+  &:last-of-type{
+    right: 0;
   }
 }
 
 .carousel-button {
   cursor: pointer;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+//Carousel Dot Controls
+.carousel-dot-wrap {
   width: 30%;
-  display: inline;
-  &.back {
-    float: left;
-    text-align: left;
-  }
-  &.fwd {
-    float: right;
-    text-align: right;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carousel-dot {
+  cursor: pointer;
+  margin: 0 5px 10px;
+  color: $dot-background-color;
+  &.active {
+    color: lighten($dot-background-color, 30%);
   }
 }
